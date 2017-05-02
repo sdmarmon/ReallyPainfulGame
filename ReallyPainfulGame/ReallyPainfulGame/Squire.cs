@@ -10,5 +10,10 @@ namespace ReallyPainfulGame
         public Squire(string name): base(name, 11, 11, 10, 11)
         {
         }
+
+        public override void spell()
+        {
+            
+        }
     }
 }

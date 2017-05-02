@@ -11,5 +11,10 @@ namespace ReallyPainfulGame
         {
         }
 
+        public override void spell()
+        {
+
+        }
+
     }
 }

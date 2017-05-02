@@ -10,5 +10,10 @@ namespace ReallyPainfulGame
         public Fighter(string name) : base(name, 13, 10, 10, 10)
         {
         }
+
+        public override void spell()
+        {
+
+        }
     }
 }
