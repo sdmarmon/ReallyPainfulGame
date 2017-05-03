@@ -9,6 +9,7 @@ namespace ReallyPainfulGame
     {
         static void Main(string[] args)
         {
+            World game = new World();
         }
     }
 }

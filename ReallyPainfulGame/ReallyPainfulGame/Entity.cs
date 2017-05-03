@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    class Entity
+    abstract class Entity
     {
         protected string _name;
         protected int _healthMax;

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    class Player : Entity
+    abstract class Player : Entity
     {
         protected const int _xpMax = 100;
         protected int _experience;
@@ -27,11 +27,8 @@ namespace ReallyPainfulGame
 
         }
 
-        public abstract void spell()
-        {
-        }
+        public abstract void spell();
 
-       
     }
 
 }
