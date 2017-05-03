@@ -5,8 +5,11 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    class Equipment : Item
+    public class Equipment : Item
     {
+        public Equipment(string name) : base(name)
+        {
 
+        }
     }
 }

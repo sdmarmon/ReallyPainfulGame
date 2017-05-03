@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    class Paladin : Player
+    public class Paladin : Player
     {
         public Paladin(string name) : base(name, 10, 13, 10, 10)
         {

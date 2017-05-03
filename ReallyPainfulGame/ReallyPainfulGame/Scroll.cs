@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    class Scroll : Consumable
+    public class Scroll : Consumable
     {
 
     }

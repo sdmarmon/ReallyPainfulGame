@@ -5,7 +5,26 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    class Helmet : Equipment
+    public class Helmet : Equipment
     {
+        private int _health;
+
+        public int Health
+        {
+            get
+            {
+                return _health;
+            }
+
+            set
+            {
+                _health = value;
+            }
+        }
+
+        public Helmet(string name, int health) : base(name)
+        {
+            _health = health;
+        }
     }
 }

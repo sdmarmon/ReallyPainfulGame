@@ -5,7 +5,26 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    class Item
+    public abstract class Item
     {
+        private string _name;
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+
+            set
+            {
+                _name = value;
+            }
+        }
+
+        public Item(string name)
+        {
+            _name = name;
+        }
     }
 }

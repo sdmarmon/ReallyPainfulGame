@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    class Consumable : Item
+    public class Consumable : Item
     {
     }
 }

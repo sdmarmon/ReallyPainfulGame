@@ -11,7 +11,14 @@ namespace ReallyPainfulGame
 
         public World()
         {
-            createPlayer();
+            //createPlayer();
+
+            /* Test combat contre un ennemi */
+            _player = new Paladin("Moi");
+            Enemy monster = new Enemy();
+            _player.battle(ref monster);
+
+
             Console.ReadLine();
         }
 
