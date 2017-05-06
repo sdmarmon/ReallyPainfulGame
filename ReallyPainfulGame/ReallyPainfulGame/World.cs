@@ -8,29 +8,35 @@ namespace ReallyPainfulGame
     class World
     {
         private Player _player;
+        private Room _currentRoom;
+        private List<Room> _rooms;
 
         public World()
         {
             //createPlayer();
 
             /* Test combat contre un ennemi */
-            _player = new Squire("Moi");
+            //_player = new Squire("Moi");
             Enemy monster = new Enemy();
-            if (_player.battle(monster))
-            {
-                Console.WriteLine("Vous avez tué un " + monster.Name);
-                _player.levelUp(monster);
-                /* Loot enemy */
-                _player.Golds += monster.Golds;
+            //if (_player.battle(monster))
+            //{
+            //    Console.WriteLine("Vous avez tué un " + monster.Name);
+            //    _player.levelUp(monster);
+            //    /* Loot enemy */
+            //    _player.Golds += monster.Golds;
                 
 
-            }
-            else
-            {
-                /* Respawn */
-                Console.WriteLine("Vous avez été tué par un " + monster.Name);
-            }
+            //}
+            //else
+            //{
+            //    /* Respawn */
+            //    Console.WriteLine("Vous avez été tué par un " + monster.Name);
+            //}
 
+            Room room1 = new Room("room1", "room1", monster);
+            Room room2 = new Room("room2", "room2", monster);
+            room1.linkRoom(ref room2, Direction.North);
+            Console.WriteLine(room2.Rooms[Direction.South]);
 
             Console.ReadLine();
         }
