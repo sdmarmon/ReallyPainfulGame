@@ -5,7 +5,9 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
+    public enum Direction { North, South, West, East };
     class Room
     {
+
     }
 }

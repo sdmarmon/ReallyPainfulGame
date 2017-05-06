@@ -53,34 +53,22 @@ namespace ReallyPainfulGame
                 Console.WriteLine("2: Lancer un sort");
                 Console.WriteLine("3: Boire une potion");
 
-                if (Health > 0)
+                /* The fastest strikes fisrt */
+                if(Speed >= enemy.Speed)
                 {
-                    string choice = "";
-                    do
+                    battleAction(enemy);
+                    if (enemy.Health > 0)
                     {
-                        choice = Console.ReadLine();
-                    } while (choice != "1");
-
-                    switch (choice)
-                    {
-                        case "1":
-                            attack(enemy);
-                            break;
-                        case "2":
-
-                            break;
-                        case "3":
-
-                            break;
-                        case "4":
-
-                            break;
+                        enemy.attack(this);
                     }
                 }
-
-                if (enemy.Health > 0)
+                else
                 {
-                    enemy.attack(this);
+                    if (enemy.Health > 0)
+                    {
+                        enemy.attack(this);
+                    }
+                    battleAction(enemy);
                 }
             }
             Console.Clear();
@@ -100,7 +88,7 @@ namespace ReallyPainfulGame
             {
                 damages += Weapon.Attack;
             }
-            
+
             enemy.Health -= (int)(((2 * damages - enemy.Defense) / 2) * Math.Pow(damages, 1/3) * Math.Sqrt(enemy.Defense));
         }
 
@@ -125,7 +113,35 @@ namespace ReallyPainfulGame
 
         }
 
-        public abstract void spell();
+        public void battleAction(Enemy enemy)
+        {
+            if (Health > 0)
+            {
+                string choice = "";
+                do
+                {
+                    choice = Console.ReadLine();
+                } while (choice != "1" && choice != "2");
+
+                switch (choice)
+                {
+                    case "1":
+                        attack(enemy);
+                        break;
+                    case "2":
+                        spell(enemy);
+                        break;
+                    case "3":
+
+                        break;
+                    case "4":
+
+                        break;
+                }
+            }
+        }
+
+        public abstract void spell(Enemy enemy);
 
     }
 

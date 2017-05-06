@@ -12,7 +12,7 @@ namespace ReallyPainfulGame
 
         }
 
-        public override void spell()
+        public override void spell(Enemy enemy)
         {
 
         }

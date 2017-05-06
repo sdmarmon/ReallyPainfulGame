@@ -14,10 +14,11 @@ namespace ReallyPainfulGame
             //createPlayer();
 
             /* Test combat contre un ennemi */
-            _player = new Paladin("Moi");
+            _player = new Squire("Moi");
             Enemy monster = new Enemy();
             if (_player.battle(monster))
             {
+                Console.WriteLine("Vous avez tué un " + monster.Name);
                 _player.levelUp(monster);
                 /* Loot enemy */
                 _player.Golds += monster.Golds;
@@ -27,6 +28,7 @@ namespace ReallyPainfulGame
             else
             {
                 /* Respawn */
+                Console.WriteLine("Vous avez été tué par un " + monster.Name);
             }
 
 
