@@ -5,12 +5,7 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    public class Potion : Consumable
+    class Room
     {
-        
-        public Potion(string name) : base(name)
-        {
-
-        }
     }
 }

@@ -16,7 +16,18 @@ namespace ReallyPainfulGame
             /* Test combat contre un ennemi */
             _player = new Paladin("Moi");
             Enemy monster = new Enemy();
-            _player.battle(ref monster);
+            if (_player.battle(monster))
+            {
+                _player.levelUp(monster);
+                /* Loot enemy */
+                _player.Golds += monster.Golds;
+                
+
+            }
+            else
+            {
+                /* Respawn */
+            }
 
 
             Console.ReadLine();
@@ -39,18 +50,18 @@ namespace ReallyPainfulGame
 
             } while (choice!= "1"&& choice != "2" && choice != "3" && choice != "4");
             Console.Clear();
-            switch (int.Parse(choice))
+            switch (choice)
             {
-                case 1:
+                case "1":
                     _player = new Squire(name);
                     break;
-                case 2:
+                case "2":
                     _player = new Fighter(name);
                     break;
-                case 3:
+                case "3":
                     _player = new Paladin(name);
                     break;
-                case 4:
+                case "4":
                     _player = new Ninja(name);
                     break;
             }
