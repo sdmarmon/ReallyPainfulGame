@@ -29,7 +29,7 @@ namespace ReallyPainfulGame
                 damages += Weapon.Attack;
             }
 
-            enemy.Health -= (int)(((2 * damages - enemy.Defense) / 2) * Math.Pow(damages, 1 / 3) * Math.Sqrt(enemy.Defense));
+            enemy.Health -= (int)(((2 * damages - enemy.Defense) / 2) * Math.Pow(damages, 1 / 3) / Math.Sqrt(enemy.Defense));
         }
     }
 }

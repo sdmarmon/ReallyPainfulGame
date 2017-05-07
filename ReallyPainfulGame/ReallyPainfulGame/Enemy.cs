@@ -22,7 +22,7 @@ namespace ReallyPainfulGame
 
         public void attack(Player player)
         {
-            player.Health -= (int)(((2 * Attack - player.Defense) / 2) * Math.Pow(Attack, 1 / 3) * Math.Sqrt(player.Defense));
+            player.Health -= (int)(((2 * Attack - player.Defense) / 2) * Math.Pow(Attack, 1 / 3) / Math.Sqrt(player.Defense));
         }
     }
 }
