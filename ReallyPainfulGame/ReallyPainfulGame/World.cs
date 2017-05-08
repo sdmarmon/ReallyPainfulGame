@@ -8,20 +8,16 @@ namespace ReallyPainfulGame
     class World
     {
         private Player _player;
-        private Room _currentRoom;
-        private Room _spawn;
 
         public World()
         {
             //playerCreation();
 
             init();
-            _player = new Squire("Moi");
-            while (true)
+            while (true) //sale, à changer
             {
-                duel(_currentRoom);
-                Console.WriteLine(_currentRoom);
-                move();
+                _player.duel();
+                _player.move();
             }
 
             Console.ReadLine();
@@ -30,6 +26,8 @@ namespace ReallyPainfulGame
         /* Player creation */
         public void playerCreation()
         {
+            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null); // salle à revoir
+
             Console.WriteLine("Rentrez le nom de votre personnage :");
             string name = Console.ReadLine();
             string choice = "";
@@ -48,60 +46,28 @@ namespace ReallyPainfulGame
             switch (choice)
             {
                 case "1":
-                    _player = new Squire(name);
+                    _player = new Squire(name,room1);
                     break;
                 case "2":
-                    _player = new Fighter(name);
+                    _player = new Fighter(name, room1);
                     break;
                 case "3":
-                    _player = new Paladin(name);
+                    _player = new Paladin(name, room1);
                     break;
                 case "4":
-                    _player = new Ninja(name);
+                    _player = new Ninja(name, room1);
                     break;
             }
 
         }
 
-        public void move()
-        {
-            Console.WriteLine("Choisissez une direction");
-            Console.WriteLine("1: Nord");
-            Console.WriteLine("2: Sud");
-            Console.WriteLine("3: Ouest");
-            Console.WriteLine("4: Est");
-            Console.WriteLine("------------------");
-
-            string choice = "";
-            Direction next;
-            do
-            {
-                /* Check the action */
-                do
-                {
-                    choice = Console.ReadLine();
-                } while (choice != "1" && choice != "2" && choice != "3" && choice != "4");
-
-                /* Define next room */
-                next = (Direction)(int.Parse(choice) - 1);
-                if (_currentRoom.Rooms[next] == null)
-                {
-                    Console.WriteLine("vous ne pouvez pas aller dans cette direction");
-                }
-            } while (_currentRoom.Rooms[next] == null);
-
-            _currentRoom = _currentRoom.Rooms[next];
-            Console.Clear();
-        }
-
         /* Create the world */
         public void init()
         {
-            
 
+            
             Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null);
-            _currentRoom = room1;
-            _spawn = room1;
+            _player = new Squire("Moi",room1);
             Room room2 = new Room("room 1.0", "Ceci est la room 1.0", new Enemy(1));
             Room room3 = new Room("room 2.0", "Ceci est la room 2.0", null);
             Room room4 = new Room("room 0.1", "Ceci est la room 0.1", new Enemy());
@@ -114,28 +80,6 @@ namespace ReallyPainfulGame
             room4.linkRoom(ref room5, Direction.East);
         }
 
-        /* Fight against an enemy */
-        public void duel(Room room)
-        {
-            if (room.Monster != null)
-            {
-                Enemy monster = room.Monster;
-                if (_player.battle(monster))
-                {
-                    Console.WriteLine("Vous avez tué un " + monster.Name);
-                    _player.levelUp(monster);
-                    /* Loot enemy */
-                    _player.looting(monster);
-                                    
-                }
-                else
-                {
-                    /* Respawn */
-                    Console.WriteLine("Vous avez été tué par un " + monster.Name);
-                    _currentRoom = _spawn;
-                    _player.regeneration();
-                }
-            }
-        }
+        
     }
 }

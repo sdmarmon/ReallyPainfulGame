@@ -7,7 +7,7 @@ namespace ReallyPainfulGame
 {
     public class Paladin : Player
     {
-        public Paladin(string name) : base(name, 10, 13, 10, 10)
+        public Paladin(string name, Room spawn) : base(name, 10, 13, 10, 10, spawn)
         {
 
         }

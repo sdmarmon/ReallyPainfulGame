@@ -5,12 +5,14 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    public class Consumable : Item
+    public abstract class Consumable : Item
     {
 
         public Consumable(string name) : base(name)
         {
 
         }
+
+        public abstract void use(Player player);
     }
 }

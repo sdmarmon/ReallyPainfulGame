@@ -7,7 +7,7 @@ namespace ReallyPainfulGame
 {
     public class Squire : Player
     {
-        public Squire(string name): base(name, 11, 11, 10, 11)
+        public Squire(string name, Room spawn) : base(name, 11, 11, 10, 11,spawn)
         {
 
         }

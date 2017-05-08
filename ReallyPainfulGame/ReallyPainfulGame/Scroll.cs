@@ -11,5 +11,10 @@ namespace ReallyPainfulGame
         {
 
         }
+
+        public override void use(Player player)
+        {
+            player.respawn();
+        }
     }
 }

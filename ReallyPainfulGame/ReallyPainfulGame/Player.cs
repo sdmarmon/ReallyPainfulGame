@@ -15,6 +15,9 @@ namespace ReallyPainfulGame
         private Helmet _helmet;
         private Weapon _weapon;
 
+        private Room _currentRoom;
+        private Room _spawn;
+
         private List<Item> _inventory;
 
         public Weapon Weapon
@@ -30,9 +33,11 @@ namespace ReallyPainfulGame
             }
         }
 
-        public Player(string name, int attack, int defense, int critical, int speed) : base(name, 1, 100, 100, attack, defense, critical, speed, 0)
+        public Player(string name, int attack, int defense, int critical, int speed, Room spawn) : base(name, 1, 100, 100, attack, defense, critical, speed, 0)
         {
             _experience = 0;
+            _spawn = spawn;
+            respawn();
             _inventory = new List<Item>();
         }
 
@@ -115,11 +120,12 @@ namespace ReallyPainfulGame
         {
             if (Health > 0)
             {
+                string[] choices = new string[] {"1", "2"};
                 string choice = "";
                 do
                 {
                     choice = Console.ReadLine();
-                } while (choice != "1" && choice != "2");
+                } while (!choices.Contains(choice));
 
                 switch (choice)
                 {
@@ -130,7 +136,7 @@ namespace ReallyPainfulGame
                         spell(enemy);
                         break;
                     case "3":
-
+                        
                         break;
                     case "4":
 
@@ -212,10 +218,69 @@ namespace ReallyPainfulGame
             }
         }
 
-        public void equipmentChoice(Equipment equi)
+        /* Fight against an enemy */
+        public void duel()
         {
+            if (_currentRoom.Monster != null)
+            {
+                Enemy monster = _currentRoom.Monster;
+                if (battle(monster))
+                {
+                    Console.WriteLine("Vous avez tué un " + monster.Name);
+                    levelUp(monster);
+                    /* Loot enemy */
+                    looting(monster);
 
+                }
+                else
+                {
+                    /* Respawn */
+                    Console.WriteLine("Vous avez été tué par un " + monster.Name);
+                    respawn();
+                    regeneration();
+                }
+            }
         }
+
+        /* Move player */
+        public void move()
+        {
+            Console.WriteLine(_currentRoom);
+            Console.WriteLine("Choisissez une direction");
+            Console.WriteLine("1: Nord");
+            Console.WriteLine("2: Sud");
+            Console.WriteLine("3: Ouest");
+            Console.WriteLine("4: Est");
+            Console.WriteLine("------------------");
+
+            string choice = "";
+            Direction next;
+            do
+            {
+                /* Check the action */
+                string[] choices = new string[] { "1", "2", "3" ,"4"};
+                do
+                {
+                    choice = Console.ReadLine();
+                } while (!choices.Contains(choice));
+
+                /* Define next room */
+                next = (Direction)(int.Parse(choice) - 1);
+                if (_currentRoom.Rooms[next] == null)
+                {
+                    Console.WriteLine("vous ne pouvez pas aller dans cette direction");
+                }
+            } while (_currentRoom.Rooms[next] == null);
+
+            _currentRoom = _currentRoom.Rooms[next];
+            Console.Clear();
+        }
+
+        public void respawn()
+        {
+            _currentRoom = _spawn;
+        }
+
         public abstract void spell(Enemy enemy);
 
     }
