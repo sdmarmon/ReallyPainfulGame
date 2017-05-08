@@ -9,24 +9,26 @@ namespace ReallyPainfulGame
     {
         private Player _player;
         private Room _currentRoom;
+        private Room _spawn;
 
         public World()
         {
-            //createPlayer();
+            //playerCreation();
 
             init();
             _player = new Squire("Moi");
             while (true)
             {
-                Console.WriteLine(_currentRoom);
                 duel(_currentRoom);
+                Console.WriteLine(_currentRoom);
                 move();
             }
 
             Console.ReadLine();
         }
 
-        public void createPlayer()
+        /* Player creation */
+        public void playerCreation()
         {
             Console.WriteLine("Rentrez le nom de votre personnage :");
             string name = Console.ReadLine();
@@ -99,9 +101,10 @@ namespace ReallyPainfulGame
 
             Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null);
             _currentRoom = room1;
+            _spawn = room1;
             Room room2 = new Room("room 1.0", "Ceci est la room 1.0", monster);
             Room room3 = new Room("room 2.0", "Ceci est la room 2.0", null);
-            Room room4 = new Room("room 0.1", "Ceci est la room 0.1", null);
+            Room room4 = new Room("room 0.1", "Ceci est la room 0.1", monster);
             Room room5 = new Room("room 1.1", "Ceci est la room 1.1", null);
 
             room1.linkRoom(ref room2, Direction.East);
@@ -128,6 +131,8 @@ namespace ReallyPainfulGame
                 {
                     /* Respawn */
                     Console.WriteLine("Vous avez été tué par un " + monster.Name);
+                    _currentRoom = _spawn;
+                    _player.regeneration();
                 }
             }
         }

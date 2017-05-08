@@ -5,14 +5,33 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    public class Equipment : Item
+    public abstract class Equipment : Item
     {
-        
-        public Equipment(string name) : base(name)
-        {
+        private int _level;
 
+        public int Level
+        {
+            get
+            {
+                return _level;
+            }
+
+            set
+            {
+                _level = value;
+            }
+        }
+        public Equipment(string name, int level) : base(name)
+        {
+            _level = level;
         }
 
-        
+        public override string ToString()
+        {
+            string text = base.ToString();
+            text += "";
+            return text;
+        }
+
     }
 }

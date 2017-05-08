@@ -22,7 +22,7 @@ namespace ReallyPainfulGame
             }
         }
 
-        public Boots(string name, int speed) : base(name)
+        public Boots(string name, int level, int speed) : base(name,level)
         {
             _speed = speed;
         }

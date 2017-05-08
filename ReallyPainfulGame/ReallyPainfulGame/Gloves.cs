@@ -22,7 +22,7 @@ namespace ReallyPainfulGame
             }
         }
 
-        public Gloves(string name, int critical) : base(name)
+        public Gloves(string name,int level, int critical) : base(name, level)
         {
             _critical = critical;
         }

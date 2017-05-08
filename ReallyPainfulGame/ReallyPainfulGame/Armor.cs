@@ -22,7 +22,7 @@ namespace ReallyPainfulGame
             }
         }
 
-        public Armor(string name, int defense) : base(name)
+        public Armor(string name, int level, int defense) : base(name,level)
         {
             _defense = defense;
         }

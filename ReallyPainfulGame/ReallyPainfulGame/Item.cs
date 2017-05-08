@@ -21,10 +21,15 @@ namespace ReallyPainfulGame
                 _name = value;
             }
         }
-
         public Item(string name)
         {
             _name = name;
+        }
+
+        public override string ToString()
+        {
+            string text = "-- " + _name + " --\n";
+            return text;
         }
     }
 }

@@ -21,8 +21,7 @@ namespace ReallyPainfulGame
                 _attack = value;
             }
         }
-
-        public Weapon(string name, int attack) : base(name)
+        public Weapon(string name, int level, int attack) : base(name,level)
         {
             _attack = attack;
         }

@@ -21,8 +21,7 @@ namespace ReallyPainfulGame
                 _health = value;
             }
         }
-
-        public Helmet(string name, int health) : base(name)
+        public Helmet(string name, int level, int health) : base(name,level)
         {
             _health = health;
         }

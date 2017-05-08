@@ -99,15 +99,13 @@ namespace ReallyPainfulGame
             {
                 Level++;
                 HealthMax += 5;
-                Health = HealthMax;
                 ManaMax += 2;
-                Mana = ManaMax;
                 Critical++;
-
                 Attack++;
                 Defense++;
                 Speed++;
                 _experience = 0;
+                regeneration();
             }
             Console.WriteLine("Experience : "+_experience);
 

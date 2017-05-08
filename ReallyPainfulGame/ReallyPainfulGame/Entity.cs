@@ -154,16 +154,21 @@ namespace ReallyPainfulGame
 
         public Entity(string name, int level, int healthMax, int manaMax, int attack, int defense, int critical, int speed, int golds){
             Name = name;
-            HealthMax = healthMax;
-            Health = healthMax;
+            HealthMax = healthMax;     
             ManaMax = manaMax;
-            Mana = manaMax;
             Level = level;
             Golds = golds;
             Attack = attack;
             Defense = defense;
             Critical = critical;
             Speed = speed;
+            regeneration();
+        }
+
+        public void regeneration()
+        {
+            Health = HealthMax;
+            Mana = ManaMax;
         }
 
     }
