@@ -54,7 +54,7 @@ namespace ReallyPainfulGame
                 Console.WriteLine("3: Boire une potion");
 
                 /* The fastest strikes fisrt */
-                if(Speed >= enemy.Speed)
+                if (Speed >= enemy.Speed)
                 {
                     battleAction(enemy);
                     if (enemy.Health > 0)
@@ -89,13 +89,13 @@ namespace ReallyPainfulGame
                 damages += Weapon.Attack;
             }
 
-            enemy.Health -= (int)(((2 * damages - enemy.Defense) / 2) * Math.Pow(damages, 1/3) / Math.Sqrt(enemy.Defense));
+            enemy.Health -= (int)(((2 * damages - enemy.Defense) / 2) * Math.Pow(damages, 1 / 3) / Math.Sqrt(enemy.Defense));
         }
 
         public void levelUp(Enemy enemy)
         {
-            _experience = (int)(10 * Math.Pow(enemy.Level / Level,2));
-            if(_experience>=100)
+            _experience = (int)(10 * Math.Pow(enemy.Level / Level, 2));
+            if (_experience >= 100)
             {
                 Level++;
                 HealthMax += 5;
@@ -107,7 +107,7 @@ namespace ReallyPainfulGame
                 _experience = 0;
                 regeneration();
             }
-            Console.WriteLine("Experience : "+_experience);
+            Console.WriteLine("Experience : " + _experience);
 
         }
 
@@ -139,6 +139,83 @@ namespace ReallyPainfulGame
             }
         }
 
+        public void looting(Enemy enemy)
+        {
+            Golds += enemy.Golds;
+            switch (enemy.Loot.GetType().Name)
+            {
+                case "Armor":
+                    if (_armor != null)
+                    {
+                        if (enemy.Loot.Level > _armor.Level)
+                        {
+                            _armor = enemy.Loot as Armor;
+                        }
+                    }
+                    else
+                    {
+                        _armor = enemy.Loot as Armor;
+                    }
+                    break;
+                case "Boots":
+                    if (_boots != null)
+                    {
+                        if (enemy.Loot.Level > _boots.Level)
+                        {
+                            _boots = enemy.Loot as Boots;
+                        }
+                    }
+                    else
+                    {
+                        _boots = enemy.Loot as Boots;
+                    }
+                    break;
+                case "Gloves":
+                    if (_gloves != null)
+                    {
+                        if (enemy.Loot.Level > _gloves.Level)
+                        {
+                            _gloves = enemy.Loot as Gloves;
+                        }
+                    }
+                    else
+                    {
+                        _gloves = enemy.Loot as Gloves;
+                    }
+                    break;
+                case "Helmet":
+                    if (_helmet != null)
+                    {
+                        if (enemy.Loot.Level > _helmet.Level)
+                        {
+                            _helmet = enemy.Loot as Helmet;
+                        }
+                    }
+                    else
+                    {
+                        _helmet = enemy.Loot as Helmet;
+                    }
+                    break;
+                case "Weapon":
+                    if (_weapon != null)
+                    {
+                        if (enemy.Loot.Level > _weapon.Level)
+                        {
+                            _weapon = enemy.Loot as Weapon;
+                        }
+                    }
+                    else
+                    {
+                        _weapon = enemy.Loot as Weapon;
+                    }
+                    break;
+            }
+        }
+
+        public void equipmentChoice(Equipment equi)
+        {
+
+        }
         public abstract void spell(Enemy enemy);
 
     }

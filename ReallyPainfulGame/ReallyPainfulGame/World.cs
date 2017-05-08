@@ -97,14 +97,14 @@ namespace ReallyPainfulGame
         /* Create the world */
         public void init()
         {
-            Enemy monster = new Enemy();
+            
 
             Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null);
             _currentRoom = room1;
             _spawn = room1;
-            Room room2 = new Room("room 1.0", "Ceci est la room 1.0", monster);
+            Room room2 = new Room("room 1.0", "Ceci est la room 1.0", new Enemy(1));
             Room room3 = new Room("room 2.0", "Ceci est la room 2.0", null);
-            Room room4 = new Room("room 0.1", "Ceci est la room 0.1", monster);
+            Room room4 = new Room("room 0.1", "Ceci est la room 0.1", new Enemy());
             Room room5 = new Room("room 1.1", "Ceci est la room 1.1", null);
 
             room1.linkRoom(ref room2, Direction.East);
@@ -125,7 +125,8 @@ namespace ReallyPainfulGame
                     Console.WriteLine("Vous avez tué un " + monster.Name);
                     _player.levelUp(monster);
                     /* Loot enemy */
-                    _player.Golds += monster.Golds;
+                    _player.looting(monster);
+                                    
                 }
                 else
                 {
