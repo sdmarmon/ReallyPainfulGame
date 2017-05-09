@@ -73,7 +73,7 @@ namespace ReallyPainfulGame
             Rooms.Add(Direction.East, null);
         }
 
-        public void linkRoom(ref Room room, Direction direction)
+        public void LinkRoom(ref Room room, Direction direction)
         {
             Rooms[direction] = room;
 

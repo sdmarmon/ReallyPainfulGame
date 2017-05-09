@@ -13,18 +13,18 @@ namespace ReallyPainfulGame
         {
             //playerCreation();
 
-            init();
+            Init();
             while (true) //sale, à changer
             {
-                _player.duel();
-                _player.move();
+                _player.Duel();
+                _player.Move();
             }
 
             Console.ReadLine();
         }
 
         /* Player creation */
-        public void playerCreation()
+        public void PlayerCreation()
         {
             Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null); // salle à revoir
 
@@ -62,7 +62,7 @@ namespace ReallyPainfulGame
         }
 
         /* Create the world */
-        public void init()
+        public void Init()
         {
 
             
@@ -73,11 +73,11 @@ namespace ReallyPainfulGame
             Room room4 = new Room("room 0.1", "Ceci est la room 0.1", new Enemy());
             Room room5 = new Room("room 1.1", "Ceci est la room 1.1", null);
 
-            room1.linkRoom(ref room2, Direction.East);
-            room2.linkRoom(ref room3, Direction.East);
-            room1.linkRoom(ref room4, Direction.South);
-            room2.linkRoom(ref room5, Direction.South);
-            room4.linkRoom(ref room5, Direction.East);
+            room1.LinkRoom(ref room2, Direction.East);
+            room2.LinkRoom(ref room3, Direction.East);
+            room1.LinkRoom(ref room4, Direction.South);
+            room2.LinkRoom(ref room5, Direction.South);
+            room4.LinkRoom(ref room5, Direction.East);
         }
 
         

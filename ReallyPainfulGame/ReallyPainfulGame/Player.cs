@@ -37,11 +37,11 @@ namespace ReallyPainfulGame
         {
             _experience = 0;
             _spawn = spawn;
-            respawn();
+            Respawn();
             _inventory = new List<Item>();
         }
 
-        public bool battle(Enemy enemy)
+        public bool Battle(Enemy enemy)
         {
             bool win = false;
             while (Health > 0 && enemy.Health > 0)
@@ -61,19 +61,19 @@ namespace ReallyPainfulGame
                 /* The fastest strikes fisrt */
                 if (Speed >= enemy.Speed)
                 {
-                    battleAction(enemy);
+                    BattleAction(enemy);
                     if (enemy.Health > 0)
                     {
-                        enemy.attack(this);
+                        enemy.Fight(this);
                     }
                 }
                 else
                 {
                     if (enemy.Health > 0)
                     {
-                        enemy.attack(this);
+                        enemy.Fight(this);
                     }
-                    battleAction(enemy);
+                    BattleAction(enemy);
                 }
             }
             Console.Clear();
@@ -86,7 +86,7 @@ namespace ReallyPainfulGame
             return win;
         }
 
-        public void attack(Enemy enemy)
+        public void Fight(Enemy enemy)
         {
             int damages = Attack;
             if (Weapon != null)
@@ -97,7 +97,7 @@ namespace ReallyPainfulGame
             enemy.Health -= (int)(((2 * damages - enemy.Defense) / 2) * Math.Pow(damages, 1 / 3) / Math.Sqrt(enemy.Defense));
         }
 
-        public void levelUp(Enemy enemy)
+        public void LevelUp(Enemy enemy)
         {
             _experience = (int)(10 * Math.Pow(enemy.Level / Level, 2));
             if (_experience >= 100)
@@ -110,13 +110,13 @@ namespace ReallyPainfulGame
                 Defense++;
                 Speed++;
                 _experience = 0;
-                regeneration();
+                Regeneration();
             }
             Console.WriteLine("Experience : " + _experience);
 
         }
 
-        public void battleAction(Enemy enemy)
+        public void BattleAction(Enemy enemy)
         {
             if (Health > 0)
             {
@@ -130,10 +130,10 @@ namespace ReallyPainfulGame
                 switch (choice)
                 {
                     case "1":
-                        attack(enemy);
+                        Fight(enemy);
                         break;
                     case "2":
-                        spell(enemy);
+                        Spell(enemy);
                         break;
                     case "3":
                         
@@ -145,7 +145,7 @@ namespace ReallyPainfulGame
             }
         }
 
-        public void looting(Enemy enemy)
+        public void Looting(Enemy enemy)
         {
             Golds += enemy.Golds;
             switch (enemy.Loot.GetType().Name)
@@ -219,31 +219,31 @@ namespace ReallyPainfulGame
         }
 
         /* Fight against an enemy */
-        public void duel()
+        public void Duel()
         {
             if (_currentRoom.Monster != null)
             {
                 Enemy monster = _currentRoom.Monster;
-                if (battle(monster))
+                if (Battle(monster))
                 {
                     Console.WriteLine("Vous avez tué un " + monster.Name);
-                    levelUp(monster);
+                    LevelUp(monster);
                     /* Loot enemy */
-                    looting(monster);
+                    Looting(monster);
 
                 }
                 else
                 {
                     /* Respawn */
                     Console.WriteLine("Vous avez été tué par un " + monster.Name);
-                    respawn();
-                    regeneration();
+                    Respawn();
+                    Regeneration();
                 }
             }
         }
 
         /* Move player */
-        public void move()
+        public void Move()
         {
             Console.WriteLine(_currentRoom);
             Console.WriteLine("Choisissez une direction");
@@ -276,12 +276,12 @@ namespace ReallyPainfulGame
             Console.Clear();
         }
 
-        public void respawn()
+        public void Respawn()
         {
             _currentRoom = _spawn;
         }
 
-        public abstract void spell(Enemy enemy);
+        public abstract void Spell(Enemy enemy);
 
     }
 

@@ -162,10 +162,10 @@ namespace ReallyPainfulGame
             Defense = defense;
             Critical = critical;
             Speed = speed;
-            regeneration();
+            Regeneration();
         }
 
-        public void regeneration()
+        public void Regeneration()
         {
             Health = HealthMax;
             Mana = ManaMax;

@@ -13,6 +13,6 @@ namespace ReallyPainfulGame
 
         }
 
-        public abstract void use(Player player);
+        public abstract void Use(Player player);
     }
 }

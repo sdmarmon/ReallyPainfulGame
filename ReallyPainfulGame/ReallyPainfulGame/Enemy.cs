@@ -29,13 +29,14 @@ namespace ReallyPainfulGame
         {
             Loot = new Weapon("1", level, 10);
         }
+
         public Enemy(string name, int level, int healthMax, int manaMax, int attack, int defense, int critical, int speed, int golds, Equipment loot) : 
             base(name, level, healthMax, manaMax, attack, defense, critical, speed, golds)
         {
             Loot = loot;
         }
 
-        public void attack(Player player)
+        public void Fight(Player player)
         {
             player.Health -= (int)(((2 * Attack - player.Defense) / 2) * Math.Pow(Attack, 1 / 3) / Math.Sqrt(player.Defense));
         }

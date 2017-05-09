@@ -5,16 +5,15 @@ using System.Text;
 
 namespace ReallyPainfulGame
 {
-    public class Ninja : Player
+    public class BlackSmith : Villager
     {
-        public Ninja(string name, Room spawn) : base(name, 10, 10, 10, 13,spawn)
-        {
+        public BlackSmith() : base(){
+
         }
 
-        public override void Spell(Enemy enemy)
+        public override void Talk(Player player)
         {
             
         }
-
     }
 }

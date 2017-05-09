@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Armor.cs" />
+    <Compile Include="BlackSmith.cs" />
     <Compile Include="Boots.cs" />
     <Compile Include="Consumable.cs" />
     <Compile Include="Enemy.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Room.cs" />
     <Compile Include="Scroll.cs" />
     <Compile Include="Squire.cs" />
+    <Compile Include="Villager.cs" />
     <Compile Include="Weapon.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>

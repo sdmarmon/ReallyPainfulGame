@@ -13,7 +13,7 @@ namespace ReallyPainfulGame
             _health = health;
         }
 
-        public override void use(Player player)
+        public override void Use(Player player)
         {
             player.Health += _health;
         }

@@ -12,7 +12,7 @@ namespace ReallyPainfulGame
 
         }
 
-        public override void spell(Enemy enemy)
+        public override void Spell(Enemy enemy)
         {
             int damages = Attack;
 
