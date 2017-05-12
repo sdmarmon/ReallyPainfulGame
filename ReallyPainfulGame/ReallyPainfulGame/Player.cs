@@ -20,6 +20,8 @@ namespace ReallyPainfulGame
 
         private List<Item> _inventory;
 
+        protected int _spellManaCost;
+
         public List<Item> Inventory
         {
             get { return _inventory; }

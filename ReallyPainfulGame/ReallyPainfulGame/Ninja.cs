@@ -13,7 +13,7 @@ namespace ReallyPainfulGame
 
         public override void Spell(Enemy enemy)
         {
-            
+            Mana -= _spellManaCost;
         }
 
     }
