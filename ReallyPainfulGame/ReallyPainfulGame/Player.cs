@@ -120,7 +120,7 @@ namespace ReallyPainfulGame
         {
             if (Health > 0)
             {
-                string[] choices = new string[] {"1", "2"};
+                string[] choices = new string[] { "1", "2" };
                 string choice = "";
                 do
                 {
@@ -136,7 +136,7 @@ namespace ReallyPainfulGame
                         Spell(enemy);
                         break;
                     case "3":
-                        
+
                         break;
                     case "4":
 
@@ -214,6 +214,7 @@ namespace ReallyPainfulGame
                     {
                         _weapon = enemy.Loot as Weapon;
                     }
+                    
                     break;
             }
         }

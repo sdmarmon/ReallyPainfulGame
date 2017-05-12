@@ -26,7 +26,7 @@ namespace ReallyPainfulGame
         /* Player creation */
         public void PlayerCreation()
         {
-            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null); // salle à revoir
+            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null); // sale à revoir
 
             Console.WriteLine("Rentrez le nom de votre personnage :");
             string name = Console.ReadLine();
