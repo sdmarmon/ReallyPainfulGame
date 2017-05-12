@@ -9,12 +9,13 @@ namespace ReallyPainfulGame
     {
         public Fighter(string name, Room spawn) : base(name, 13, 10, 10, 10,spawn) 
         {
+            _spellManaCost = 100;
         }
 
         public override void Spell(Enemy enemy)
         {
             int damages = Attack;
-
+            Mana -= _spellManaCost;
             if (Weapon != null)
             {
                 damages += Weapon.Attack;

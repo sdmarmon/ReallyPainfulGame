@@ -11,6 +11,7 @@ namespace ReallyPainfulGame
         private string _name;
         private string _description;
         private Enemy _monster;
+        private Villager _npc;
         private Dictionary<Direction, Room> _rooms;
 
         public string Name
@@ -48,6 +49,11 @@ namespace ReallyPainfulGame
             {
                 _monster = value;
             }
+        }
+        public Villager Npc
+        {
+            get { return _npc; }
+            set { _npc = value; }
         }
         internal Dictionary<Direction, Room> Rooms
         {

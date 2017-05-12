@@ -20,6 +20,8 @@ namespace ReallyPainfulGame
 
         private List<Item> _inventory;
 
+        protected int _spellManaCost;
+
         public List<Item> Inventory
         {
             get { return _inventory; }
@@ -135,6 +137,7 @@ namespace ReallyPainfulGame
                 {
                     choices.Add("3");
                 }
+
                 string choice = "";
                 do
                 {
@@ -151,6 +154,7 @@ namespace ReallyPainfulGame
                         Spell(enemy);
                         break;
                     case "3":
+
                         choices.Clear();
                         Console.WriteLine("Choisissez une potion");
                         if (SearchItem("Potion")!=-1)
@@ -195,6 +199,7 @@ namespace ReallyPainfulGame
                                 UseConsumable("Potion X");
                                 break;
                         }
+
                         break;
                     case "4":
                         break;
@@ -271,6 +276,7 @@ namespace ReallyPainfulGame
                     {
                         _weapon = enemy.Loot as Weapon;
                     }
+                    
                     break;
             }
         }
