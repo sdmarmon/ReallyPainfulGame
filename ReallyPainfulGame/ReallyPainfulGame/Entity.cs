@@ -171,5 +171,9 @@ namespace ReallyPainfulGame
             Mana = ManaMax;
         }
 
+        public int GetDamages(int attack, int defense)
+        {
+            return ((int)(((2 * attack - defense) / 2) * Math.Pow(attack, 1 / 3) / Math.Sqrt(defense)));
+        }
     }
 }

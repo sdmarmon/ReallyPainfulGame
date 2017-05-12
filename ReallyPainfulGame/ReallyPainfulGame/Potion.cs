@@ -15,7 +15,14 @@ namespace ReallyPainfulGame
 
         public override void Use(Player player)
         {
-            player.Health += _health;
+            if (player.Health+_health >= player.HealthMax)
+            {
+                player.Health = player.HealthMax;
+            }
+            else
+            {
+                player.Health += _health;
+            }
         }
     }
 }
