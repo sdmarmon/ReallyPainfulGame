@@ -54,7 +54,7 @@ namespace ReallyPainfulGame
             bool win = false;
             while (Health > 0 && enemy.Health > 0)
             {
-                Console.Clear();
+                Console.WriteLine("------------------");
                 Console.WriteLine("--- " + enemy.Name + " ---");
                 Console.WriteLine("Hp: " + enemy.Health + "/" + enemy.HealthMax);
                 Console.WriteLine("------------------");
@@ -106,6 +106,7 @@ namespace ReallyPainfulGame
             }
 
             enemy.Health -= GetDamages(damages, enemy.Defense);
+            Console.WriteLine("Vous attaquez "+enemy.Name+" ! Votre attaque lui retire "+GetDamages(damages,enemy.Defense)+"PV.\n");
         }
 
         public void LevelUp(Enemy enemy)
@@ -146,6 +147,7 @@ namespace ReallyPainfulGame
                 switch (choice)
                 {
                     case "1":
+                        Console.Clear();
                         Fight(enemy);
                         break;
                     case "2":
@@ -176,12 +178,12 @@ namespace ReallyPainfulGame
                             Console.WriteLine("4: Potion X");
                             choices.Add("4");
                         }
-                        Console.WriteLine("------------------");
                         choice = "";
                         do
                         {
                             choice = Console.ReadLine();
                         } while (!choices.Contains(choice));
+                        Console.Clear();
                         switch (choice)
                         {
                             case "1":
@@ -200,7 +202,6 @@ namespace ReallyPainfulGame
 
                         break;
                     case "4":
-
                         break;
                 }
             }
@@ -358,6 +359,8 @@ namespace ReallyPainfulGame
             {
                 Consumable usedConsumable = _inventory.ElementAt(index) as Consumable;
                 usedConsumable.Use(this);
+                Console.WriteLine("Vous utilisez : " + _inventory.ElementAt(index).Name + ".");
+                Console.WriteLine(_inventory.ElementAt(index).ToString());
                 _inventory.RemoveAt(index);
             }
         }

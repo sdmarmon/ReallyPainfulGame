@@ -24,5 +24,10 @@ namespace ReallyPainfulGame
                 player.Health += _health;
             }
         }
+
+        public override string ToString()
+        {
+            return (base.ToString() + "Vous rend " + this._health + "PV.\n");
+        }
     }
 }

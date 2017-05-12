@@ -28,8 +28,7 @@ namespace ReallyPainfulGame
 
         public override string ToString()
         {
-            string text = "-- " + _name + " --\n";
-            return text;
+            return("-- " + _name + " --\n");
         }
     }
 }
