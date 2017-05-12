@@ -40,5 +40,10 @@ namespace ReallyPainfulGame
         {
             player.Health -= GetDamages(Attack, player.Defense);
         }
+
+        public static Enemy Gobelin()
+        {
+            return new Enemy("Ennemi", 1, 10, 100, 10, 5, 2, 10, 10, new Weapon("Epée courte", 1, 10));
+        }
     }
 }
