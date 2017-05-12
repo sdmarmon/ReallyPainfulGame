@@ -39,6 +39,7 @@ namespace ReallyPainfulGame
         public void Fight(Player player)
         {
             player.Health -= GetDamages(Attack, player.Defense);
+            Console.WriteLine(this.Name + " vous attaque ! Il vous retire " + GetDamages(Attack, player.Defense) + "PV.\n");
         }
     }
 }
