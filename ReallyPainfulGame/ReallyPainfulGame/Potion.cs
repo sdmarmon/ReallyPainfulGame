@@ -29,5 +29,22 @@ namespace ReallyPainfulGame
         {
             return (base.ToString() + "Vous rend " + this._health + "PV.\n");
         }
+
+        public static Potion SimplePotion()
+        {
+            return new Potion("Potion", 10);
+        }
+        public static Potion SuperPotion()
+        {
+            return new Potion("Super Potion", 25);
+        }
+        public static Potion HyperPotion()
+        {
+            return new Potion("Hyper Potion", 50);
+        }
+        public static Potion PotionX()
+        {
+            return new Potion("Potion X", 100);
+        }
     }
 }
