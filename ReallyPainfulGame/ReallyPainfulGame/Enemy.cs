@@ -38,7 +38,7 @@ namespace ReallyPainfulGame
 
         public void Fight(Player player)
         {
-            player.Health -= (int)(((2 * Attack - player.Defense) / 2) * Math.Pow(Attack, 1 / 3) / Math.Sqrt(player.Defense));
+            player.Health -= GetDamages(Attack, player.Defense);
         }
     }
 }
