@@ -13,7 +13,7 @@ namespace ReallyPainfulGame
         private int _manaMax;
         private int _mana;
         private int _level;
-        private int _golds;
+        private int _gold;
         private int _attack;
         private int _defense;
         private int _critical;
@@ -91,16 +91,16 @@ namespace ReallyPainfulGame
                 _level = value;
             }
         }
-        public int Golds
+        public int Gold
         {
             get
             {
-                return _golds;
+                return _gold;
             }
 
             set
             {
-                _golds = value;
+                _gold = value;
             }
         }
         public int Attack
@@ -152,12 +152,12 @@ namespace ReallyPainfulGame
             }
         }
 
-        public Entity(string name, int level, int healthMax, int manaMax, int attack, int defense, int critical, int speed, int golds){
+        public Entity(string name, int level, int healthMax, int manaMax, int attack, int defense, int critical, int speed, int gold){
             Name = name;
             HealthMax = healthMax;     
             ManaMax = manaMax;
             Level = level;
-            Golds = golds;
+            Gold = gold;
             Attack = attack;
             Defense = defense;
             Critical = critical;

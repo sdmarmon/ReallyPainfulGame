@@ -20,6 +20,12 @@ namespace ReallyPainfulGame
 
         private List<Item> _inventory;
 
+        public List<Item> Inventory
+        {
+            get { return _inventory; }
+            set { _inventory = value; }
+        }
+
         public Weapon Weapon
         {
             get
@@ -56,7 +62,10 @@ namespace ReallyPainfulGame
                 Console.WriteLine("------------------");
                 Console.WriteLine("1: Attaque basique");
                 Console.WriteLine("2: Lancer un sort");
-                Console.WriteLine("3: Boire une potion");
+                if (_inventory.OfType<Potion>().Any())
+                {
+                    Console.WriteLine("3: Boire une potion");
+                }
 
                 /* The fastest strikes fisrt */
                 if (Speed >= enemy.Speed)
@@ -120,7 +129,11 @@ namespace ReallyPainfulGame
         {
             if (Health > 0)
             {
-                string[] choices = new string[] {"1", "2"};
+                List<string> choices = new List<string> (new string[] {"1","2"});
+                if (_inventory.OfType<Potion>().Any())
+                {
+                    choices.Add("3");
+                }
                 string choice = "";
                 do
                 {
@@ -136,7 +149,50 @@ namespace ReallyPainfulGame
                         Spell(enemy);
                         break;
                     case "3":
-                        
+                        choices.Clear();
+                        Console.WriteLine("Choisissez une potion");
+                        if (SearchItem("Potion")!=-1)
+                        {
+                            Console.WriteLine("1: Potion");
+                            choices.Add("1");
+
+                        }
+                        if (SearchItem("Super Potion") != -1)
+                        {
+                            Console.WriteLine("2: Super Potion");
+                            choices.Add("2");
+                        }
+                        if (SearchItem("Hyper Potion") != -1)
+                        {
+                            Console.WriteLine("3: Hyper Potion");
+                            choices.Add("3");
+                        }
+                        if (SearchItem("Potion X") != -1)
+                        {
+                            Console.WriteLine("4: Potion X");
+                            choices.Add("4");
+                        }
+                        Console.WriteLine("------------------");
+                        choice = "";
+                        do
+                        {
+                            choice = Console.ReadLine();
+                        } while (!choices.Contains(choice));
+                        switch (choice)
+                        {
+                            case "1":
+                                UseConsumable("Potion");
+                                break;
+                            case "2":
+                                UseConsumable("Super Potion");
+                                break;
+                            case "3":
+                                UseConsumable("Hyper Potion");
+                                break;
+                            case "4":
+                                UseConsumable("Potion X");
+                                break;
+                        }
                         break;
                     case "4":
 
@@ -147,7 +203,7 @@ namespace ReallyPainfulGame
 
         public void Looting(Enemy enemy)
         {
-            Golds += enemy.Golds;
+            Gold += enemy.Gold;
             switch (enemy.Loot.GetType().Name)
             {
                 case "Armor":
@@ -282,6 +338,23 @@ namespace ReallyPainfulGame
         }
 
         public abstract void Spell(Enemy enemy);
+
+        public int SearchItem(string name)
+        {
+            int index = _inventory.FindIndex(x => x.Name == name);
+            return index;
+        }
+
+        public void UseConsumable(string name)
+        {
+            int index = SearchItem(name);
+            if (index != -1)
+            {
+                Consumable usedConsumable = _inventory.ElementAt(index) as Consumable;
+                usedConsumable.Use(this);
+                _inventory.RemoveAt(index);
+            }
+        }
 
     }
 
