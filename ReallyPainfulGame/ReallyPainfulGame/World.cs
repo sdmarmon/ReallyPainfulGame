@@ -69,9 +69,9 @@ namespace ReallyPainfulGame
             Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null);
             _player = new Squire("Moi",room1);
             _player.Inventory.Add(new Potion("Potion", 10));
-            Room room2 = new Room("room 1.0", "Ceci est la room 1.0", new Enemy(1));
+            Room room2 = new Room("room 1.0", "Ceci est la room 1.0", Enemy.Gobelin());
             Room room3 = new Room("room 2.0", "Ceci est la room 2.0", null);
-            Room room4 = new Room("room 0.1", "Ceci est la room 0.1", new Enemy());
+            Room room4 = new Room("room 0.1", "Ceci est la room 0.1", Enemy.Gobelin());
             Room room5 = new Room("room 1.1", "Ceci est la room 1.1", null);
 
             room1.LinkRoom(ref room2, Direction.East);
