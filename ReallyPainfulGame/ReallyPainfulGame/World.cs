@@ -66,13 +66,13 @@ namespace ReallyPainfulGame
         {
 
             Alchemist alchemist = new Alchemist();
-            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null,alchemist);
+            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null,null);
             _player = new Squire("Moi",room1);
             _player.Inventory.Add(Potion.SimplePotion());
             Room room2 = new Room("room 1.0", "Ceci est la room 1.0", Enemy.Gobelin(),null);
             Room room3 = new Room("room 2.0", "Ceci est la room 2.0", null,null);
             Room room4 = new Room("room 0.1", "Ceci est la room 0.1", Enemy.Gobelin(),null);
-            Room room5 = new Room("room 1.1", "Ceci est la room 1.1", null,null);
+            Room room5 = new Room("room 1.1", "Ceci est la room 1.1", null,alchemist);
 
             room1.LinkRoom(ref room2, Direction.East);
             room2.LinkRoom(ref room3, Direction.East);
