@@ -7,8 +7,10 @@ namespace ReallyPainfulGame
 {
     public class BlackSmith : Villager
     {
-        public BlackSmith() : base(){
+        private int _level;
 
+        public BlackSmith(int level) : base(){
+            _level = level;
         }
 
         public override void Talk(Player player)

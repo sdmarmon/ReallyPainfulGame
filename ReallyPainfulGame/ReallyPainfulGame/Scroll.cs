@@ -7,7 +7,7 @@ namespace ReallyPainfulGame
 {
     public class Scroll : Consumable
     {
-        public Scroll(string name): base(name)
+        public Scroll(): base("Parchemin", 10)
         {
 
         }

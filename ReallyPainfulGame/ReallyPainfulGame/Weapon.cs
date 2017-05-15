@@ -21,39 +21,39 @@ namespace ReallyPainfulGame
                 _attack = value;
             }
         }
-        public Weapon(string name, int level, int attack) : base(name,level)
+        public Weapon(string name, int level, int attack, int price) : base(name,level,price)
         {
             _attack = attack;
         }
 
         public static Weapon ShortSword()
         {
-            return new Weapon("Epée courte", 1, 10);
+            return new Weapon("Epée courte", 1, 10,10);
         }
 
         public static Weapon Cutlass()
         {
-            return new Weapon("Sabre vicié", 2, 20);
+            return new Weapon("Sabre vicié", 2, 20,10);
         }
 
         public static Weapon Ragnarok()
         {
-            return new Weapon("Ragnarok", 3, 30);
+            return new Weapon("Ragnarok", 3, 30,30);
         }
 
         public static Weapon Claymore()
         {
-            return new Weapon("Claymore", 4, 40);
+            return new Weapon("Claymore", 4, 40,40);
         }
 
         public static Weapon Masamune()
         {
-            return new Weapon("Masamune", 5, 50);
+            return new Weapon("Masamune", 5, 50,50);
         }
 
         public static Weapon Excalibur()
         {
-            return new Weapon("Excalibur", 6, 75);
+            return new Weapon("Excalibur", 6, 75,75);
         }
     }
 }

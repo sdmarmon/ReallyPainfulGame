@@ -21,7 +21,8 @@ namespace ReallyPainfulGame
                 _level = value;
             }
         }
-        public Equipment(string name, int level) : base(name)
+        public Equipment(string name, int level, int price)
+            : base(name, price)
         {
             _level = level;
         }

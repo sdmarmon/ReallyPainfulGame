@@ -26,7 +26,7 @@ namespace ReallyPainfulGame
         /* Player creation */
         public void PlayerCreation()
         {
-            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null); // sale à revoir
+            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null,null); // sale à revoir
 
             Console.WriteLine("Rentrez le nom de votre personnage :");
             string name = Console.ReadLine();
@@ -65,14 +65,14 @@ namespace ReallyPainfulGame
         public void Init()
         {
 
-            
-            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null);
+            Alchemist alchemist = new Alchemist();
+            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null,alchemist);
             _player = new Squire("Moi",room1);
-            _player.Inventory.Add(new Potion("Potion", 10));
-            Room room2 = new Room("room 1.0", "Ceci est la room 1.0", Enemy.Gobelin());
-            Room room3 = new Room("room 2.0", "Ceci est la room 2.0", null);
-            Room room4 = new Room("room 0.1", "Ceci est la room 0.1", Enemy.Gobelin());
-            Room room5 = new Room("room 1.1", "Ceci est la room 1.1", null);
+            _player.Inventory.Add(Potion.SimplePotion());
+            Room room2 = new Room("room 1.0", "Ceci est la room 1.0", Enemy.Gobelin(),null);
+            Room room3 = new Room("room 2.0", "Ceci est la room 2.0", null,null);
+            Room room4 = new Room("room 0.1", "Ceci est la room 0.1", Enemy.Gobelin(),null);
+            Room room5 = new Room("room 1.1", "Ceci est la room 1.1", null,null);
 
             room1.LinkRoom(ref room2, Direction.East);
             room2.LinkRoom(ref room3, Direction.East);

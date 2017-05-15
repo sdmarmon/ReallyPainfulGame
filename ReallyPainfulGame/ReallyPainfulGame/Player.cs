@@ -308,6 +308,7 @@ namespace ReallyPainfulGame
         /* Move player */
         public void Move()
         {
+            _currentRoom.Npc.Talk(this);
             Console.WriteLine(_currentRoom);
             Console.WriteLine("Choisissez une direction");
             Console.WriteLine("1: Nord");

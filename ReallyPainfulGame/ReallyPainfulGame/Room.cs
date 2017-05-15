@@ -68,11 +68,12 @@ namespace ReallyPainfulGame
             }
         }
 
-        public Room(string name, string description, Enemy monster)
+        public Room(string name, string description, Enemy monster, Villager npc)
         {
             Name = name;
             Rooms = new Dictionary<Direction, Room>();
             _monster = monster;
+            _npc = npc;
             Rooms.Add(Direction.North, null);
             Rooms.Add(Direction.South, null);
             Rooms.Add(Direction.West, null);
