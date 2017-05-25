@@ -9,6 +9,7 @@ namespace ReallyPainfulGame
     {
         private const int _xpMax = 100;
         private int _experience;
+        private bool _win;
         private Armor _armor;
         private Boots _boots;
         private Gloves _gloves;
@@ -41,8 +42,17 @@ namespace ReallyPainfulGame
             }
         }
 
+        public bool Win
+        {
+            get
+            {
+                return _win;
+            }
+        }
+
         public Player(string name, int attack, int defense, int critical, int speed, Room spawn) : base(name, 1, 100, 100, attack, defense, critical, speed, 0)
         {
+            _win = false;
             _experience = 0;
             _spawn = spawn;
             Respawn();
@@ -290,6 +300,12 @@ namespace ReallyPainfulGame
                 if (Battle(monster))
                 {
                     Console.WriteLine("Vous avez tué un " + monster.Name);
+                    // Victory ?
+                    if(monster.Name == "Boss Dragon")
+                    {
+                        _win = true;
+                    }
+
                     LevelUp(monster);
                     /* Loot enemy */
                     Looting(monster);

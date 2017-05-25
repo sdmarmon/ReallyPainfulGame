@@ -163,23 +163,23 @@ namespace ReallyPainfulGame
         }
         public static Enemy BossGobelin()
         {
-            return new Enemy("Boss Gobelin", 1, 10, 100, 10, 5, 2, 10, 10, null);
+            return new Enemy("Boss Gobelin", 1, 10, 100, 10, 5, 2, 10, 10, Armor.Maximillien());
         }
         public static Enemy BossTroll()
         {
-            return new Enemy("Boss Troll", 1, 10, 100, 10, 5, 2, 10, 10, null);
+            return new Enemy("Boss Troll", 1, 10, 100, 10, 5, 2, 10, 10, Boots.SevenLeagueBoots());
         }
         public static Enemy BossCentaur()
         {
-            return new Enemy("Boss Centaur", 1, 10, 100, 10, 5, 2, 10, 10, null);
+            return new Enemy("Boss Centaur", 1, 10, 100, 10, 5, 2, 10, 10, Gloves.MogGloves());
         }
         public static Enemy BossOrc()
         {
-            return new Enemy("Boss Orc", 1, 10, 100, 10, 5, 2, 10, 10, null);
+            return new Enemy("Boss Orc", 1, 10, 100, 10, 5, 2, 10, 10, Helmet.VangaadHelmet());
         }
         public static Enemy BossDragon()
         {
-            return new Enemy("Boss Dragon", 1, 10, 100, 10, 5, 2, 10, 10, null);
+            return new Enemy("Boss Dragon", 1, 10, 100, 10, 5, 2, 10, 10, Weapon.Excalibur());
         }
     }
 }
