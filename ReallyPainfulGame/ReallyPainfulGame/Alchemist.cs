@@ -7,12 +7,12 @@ namespace ReallyPainfulGame
 {
     public class Alchemist :Villager
     {
-        private List<Consumable> _items;
+        private List<Item> _items;
  
         public Alchemist()
             : base()
         {
-            _items = new List<Consumable>();
+            _items = new List<Item>();
             _items.Add(Potion.SimplePotion());
             _items.Add(Potion.SuperPotion());
             _items.Add(Potion.HyperPotion());
@@ -34,43 +34,18 @@ namespace ReallyPainfulGame
             Console.WriteLine(_items.Count+1 + ": Dire aurevoir à l'achimiste");
 
             Console.WriteLine("Vous avez "+player.Gold+" gold");
-            int choice ;
-            do
-            {   
-                //Choice is a number ?
-                if (!int.TryParse(Console.ReadLine(), out choice))
-                {
-                    choice = -1;
-                }
 
-                //Is not a number
-                if (choice == -1)
-                {
-                    Console.WriteLine("Veuillez rentrer un nombre");
-                }
-                else 
-                {   
-                    //Doesn't leave
-                    if (choice != _items.Count + 1){
-                       if (_items.ElementAt(choice - 1).Price > player.Gold)
-                        {
-                            Console.WriteLine("Vous n'avez pas assez d'argent");
-                        }
-                        else if(choice < 1 || choice > _items.Count + 1)
-                        {
-                            Console.WriteLine("Veuillez rentrer un nombre valide");
-                        }
-                    }
-                }
-
-            } while (choice != _items.Count+1 && (choice < 1 || choice > _items.Count + 1 || _items.ElementAt(choice - 1).Price > player.Gold));
+            int itemChosen = ChooseItem(player, _items);
 
             Console.Clear();
-            if (choice != _items.Count + 1)
+            //Doesn't leave the store
+            if (itemChosen != _items.Count + 1)
             {
-                Console.WriteLine("Vous avez acheté " + _items.ElementAt(choice - 1).Name);
+                Console.WriteLine("Vous avez acheté " + _items.ElementAt(itemChosen - 1).Name);
+                // Buy the chosen item
+                player.Gold -= _items.ElementAt(itemChosen - 1).Price;
                 // Insert the chosen item in the inventory
-                player.Inventory.Add((Consumable)_items.ElementAt(choice - 1).Clone());
+                player.Inventory.Add((Consumable)_items.ElementAt(itemChosen - 1).Clone());
             }
             Console.WriteLine("Aurevoir");
             

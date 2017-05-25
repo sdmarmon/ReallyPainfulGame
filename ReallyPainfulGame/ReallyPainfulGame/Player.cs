@@ -18,11 +18,11 @@ namespace ReallyPainfulGame
         private Room _currentRoom;
         private Room _spawn;
 
-        private List<Item> _inventory;
+        private List<Consumable> _inventory;
 
         protected int _spellManaCost;
 
-        public List<Item> Inventory
+        public List<Consumable> Inventory
         {
             get { return _inventory; }
             set { _inventory = value; }
@@ -46,7 +46,7 @@ namespace ReallyPainfulGame
             _experience = 0;
             _spawn = spawn;
             Respawn();
-            _inventory = new List<Item>();
+            _inventory = new List<Consumable>();
         }
 
         public bool Battle(Enemy enemy)
@@ -284,7 +284,7 @@ namespace ReallyPainfulGame
         /* Fight against an enemy */
         public void Duel()
         {
-            if (_currentRoom.Monster != null)
+            if (_currentRoom.Monster != null && _currentRoom.Monster.Health > 0)
             {
                 Enemy monster = _currentRoom.Monster;
                 if (Battle(monster))

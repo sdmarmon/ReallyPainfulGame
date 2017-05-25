@@ -8,39 +8,80 @@ namespace ReallyPainfulGame
     public class BlackSmith : Villager
     {
         private int _level;
+        private List<Item> _items;
 
         public BlackSmith(int level) : base(){
             _level = level;
+            _items = new List<Item>();
+
+            switch (_level)
+            {
+                default:
+                    _items.Add(Armor.Cuirass());
+                    _items.Add(Boots.StuddedBoots());
+                    _items.Add(Gloves.Gauntlet());
+                    _items.Add(Helmet.FeatherMelon());
+                    _items.Add(Weapon.ShortSword());
+                    break;
+                case 2:
+                    _items.Add(Armor.IronCoat());
+                    _items.Add(Boots.FightingBoots());
+                    _items.Add(Gloves.IvoryGloves());
+                    _items.Add(Helmet.RomanHelmet());
+                    _items.Add(Weapon.Cutlass());
+                    break;
+                case 3:
+                    _items.Add(Armor.Caparison());
+                    _items.Add(Boots.FeatherBoots());
+                    _items.Add(Gloves.Bracers());
+                    _items.Add(Helmet.IronHelmet());
+                    _items.Add(Weapon.Ragnarok());
+                    break;
+                case 4:
+                    _items.Add(Armor.GoldCoat());
+                    _items.Add(Boots.Caligula());
+                    _items.Add(Gloves.GenjiGloves());
+                    _items.Add(Helmet.GenjiHelmet());
+                    _items.Add(Weapon.Claymore());
+                    break;
+                case 5:
+                    _items.Add(Armor.DiamondChestpiece());
+                    _items.Add(Boots.NinjaTabi());
+                    _items.Add(Gloves.FireMittens());
+                    _items.Add(Helmet.DiamondHelmet());
+                    _items.Add(Weapon.Masamune());
+                    break;
+            }
         }
 
         public override void Talk(Player player)
         {
             Console.Clear();
             Console.WriteLine("Bienvenue chez le forgeron");
-            Console.WriteLine("Quels équipements voulez vous acheter : ");
-            Console.WriteLine("1: Epée courte");
-            Console.WriteLine("2: Armure légère ");
-            Console.WriteLine("3: Bottes");
-
-            string[] choices = new string[] { "1", "2", "3"};
-            string choice = "";
-            do
+            Console.WriteLine("Quels équipements voulez vous acheter ?");
+            int nbitem = 1;
+            foreach (Item item in _items)
             {
-                choice = Console.ReadLine();
-            } while (!choices.Contains(choice));
-
-            switch (choice)
-            {
-                case "1":
-                    // Si le joueur a assez d'or pour acheter l'equipement
-                    break;
-                case "2":
-
-                    break;
-                case "3":
-
-                    break;
+                Console.WriteLine(nbitem + ": " + item.Name + " " + item.Price + "g");
+                nbitem++;
             }
+            Console.WriteLine(_items.Count + 1 + ": Dire aurevoir au forgeron");
+
+            Console.WriteLine("Vous avez " + player.Gold + " gold");
+
+            int itemChosen = ChooseItem(player, _items);
+
+            Console.Clear();
+            //Doesn't leave the store
+            if (itemChosen != _items.Count + 1)
+            {
+                Console.WriteLine("Vous avez acheté " + _items.ElementAt(itemChosen - 1).Name);
+                // Buy the chosen item
+                player.Gold -= _items.ElementAt(itemChosen - 1).Price;
+                // Sell the current equipment and equip the chosen item
+                player.Inventory.Add((Consumable)_items.ElementAt(itemChosen - 1).Clone());
+            }
+            Console.WriteLine("Aurevoir");
         }
     }
 }

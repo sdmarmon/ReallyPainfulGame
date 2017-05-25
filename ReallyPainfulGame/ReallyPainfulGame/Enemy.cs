@@ -28,6 +28,12 @@ namespace ReallyPainfulGame
             Loot = loot;
         }
 
+        /*
+       Name : Fight
+       Description : An enemy deals damages to the player
+       Parameters :
+           in Player player
+        */
         public void Fight(Player player)
         {
             player.Health -= GetDamages(Attack, player.Defense);
