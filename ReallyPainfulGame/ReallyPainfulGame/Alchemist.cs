@@ -13,6 +13,7 @@ namespace ReallyPainfulGame
             : base()
         {
             _items = new List<Item>();
+            //Items that the alchemist can sell
             _items.Add(Potion.SimplePotion());
             _items.Add(Potion.SuperPotion());
             _items.Add(Potion.HyperPotion());
@@ -20,6 +21,12 @@ namespace ReallyPainfulGame
             _items.Add(new Scroll());
         }
 
+        /*
+          Name : Talk
+          Description : The alchemist sells consummable to the player
+          Parameters :
+              in out Player player
+       */
         public override void Talk(Player player)
         {
             bool stay = true;

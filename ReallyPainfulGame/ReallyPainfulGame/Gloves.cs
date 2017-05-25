@@ -15,11 +15,6 @@ namespace ReallyPainfulGame
             {
                 return _critical;
             }
-
-            set
-            {
-                _critical = value;
-            }
         }
 
         public Gloves(string name,int level, int critical,int price) : base(name, level,price)
@@ -27,6 +22,7 @@ namespace ReallyPainfulGame
             _critical = critical;
         }
 
+        /* Construct different types of Gloves */
         public static Gloves Gauntlet()
         {
             return new Gloves("Gantelet", 1, 10,10);

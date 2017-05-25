@@ -15,17 +15,13 @@ namespace ReallyPainfulGame
             {
                 return _attack;
             }
-
-            set
-            {
-                _attack = value;
-            }
         }
         public Weapon(string name, int level, int attack, int price) : base(name,level,price)
         {
             _attack = attack;
         }
 
+        /* Construct different types of Weapons */
         public static Weapon ShortSword()
         {
             return new Weapon("Epée courte", 1, 10,10);

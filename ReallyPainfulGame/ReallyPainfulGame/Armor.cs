@@ -15,11 +15,6 @@ namespace ReallyPainfulGame
             {
                 return _defense;
             }
-
-            set
-            {
-                _defense = value;
-            }
         }
 
         public Armor(string name, int level, int defense, int price) : base(name,level,price)
@@ -27,6 +22,7 @@ namespace ReallyPainfulGame
             _defense = defense;
         }
 
+        /* Construct different types of Armors */
         public static Armor Cuirass()
         {
             return new Armor("Cuirasse", 1, 10, 10);

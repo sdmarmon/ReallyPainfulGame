@@ -12,6 +12,12 @@ namespace ReallyPainfulGame
 
         }
 
+        /*
+          Name : Use
+          Description : The scroll teleports the player to his respawn location
+          Parameters :
+              in out Player player
+       */
         public override void Use(Player player)
         {
             player.Respawn();

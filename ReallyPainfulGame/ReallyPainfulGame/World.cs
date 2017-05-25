@@ -20,7 +20,7 @@ namespace ReallyPainfulGame
                 if (!_player.Win)
                 {
                     _player.Move();
-                }            
+                }
             }
 
             Console.WriteLine("Bravo vous avez fini le jeu");
@@ -28,10 +28,13 @@ namespace ReallyPainfulGame
             Console.ReadLine();
         }
 
-        /* Player creation */
+        /*
+          Name : PlayerCreation
+          Description : Create the player
+       */
         public void PlayerCreation()
         {
-            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null,null); // sale à revoir
+            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null, null); // sale à revoir
 
             Console.WriteLine("Rentrez le nom de votre personnage :");
             string name = Console.ReadLine();
@@ -51,7 +54,7 @@ namespace ReallyPainfulGame
             switch (choice)
             {
                 case "1":
-                    _player = new Squire(name,room1);
+                    _player = new Squire(name, room1);
                     break;
                 case "2":
                     _player = new Fighter(name, room1);
@@ -66,18 +69,21 @@ namespace ReallyPainfulGame
 
         }
 
-        /* Create the world */
+        /*
+          Name : Init
+          Description : Create the world
+       */
         public void Init()
         {
 
             Alchemist alchemist = new Alchemist();
-            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null,null);
-            _player = new Squire("Moi",room1);
+            Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null, null);
+            _player = new Squire("Moi", room1);
             _player.Inventory.Add(Potion.SimplePotion());
-            Room room2 = new Room("room 1.0", "Ceci est la room 1.0", Enemy.BossDragon(),null);
-            Room room3 = new Room("room 2.0", "Ceci est la room 2.0", null,null);
-            Room room4 = new Room("room 0.1", "Ceci est la room 0.1", Enemy.Gobelin(),null);
-            Room room5 = new Room("room 1.1", "Ceci est la room 1.1", null,alchemist);
+            Room room2 = new Room("room 1.0", "Ceci est la room 1.0", Enemy.BossDragon(), null);
+            Room room3 = new Room("room 2.0", "Ceci est la room 2.0", null, null);
+            Room room4 = new Room("room 0.1", "Ceci est la room 0.1", Enemy.Gobelin(), null);
+            Room room5 = new Room("room 1.1", "Ceci est la room 1.1", null, alchemist);
 
             room1.LinkRoom(ref room2, Direction.East);
             room2.LinkRoom(ref room3, Direction.East);
@@ -86,6 +92,6 @@ namespace ReallyPainfulGame
             room4.LinkRoom(ref room5, Direction.East);
         }
 
-        
+
     }
 }

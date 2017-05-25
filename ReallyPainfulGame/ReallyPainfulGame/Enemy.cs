@@ -29,12 +29,12 @@ namespace ReallyPainfulGame
         }
 
         /*
-       Name : Fight
+       Name : HitPlayer
        Description : An enemy deals damages to the player
        Parameters :
-           in Player player
+           in out Player player
         */
-        public void Fight(Player player)
+        public void HitPlayer(Player player)
         {
             player.Health -= GetDamages(Attack, player.Defense);
             Console.WriteLine(this.Name + " vous attaque ! Il vous retire " + GetDamages(Attack, player.Defense) + "PV.\n");

@@ -12,6 +12,12 @@ namespace ReallyPainfulGame
             _spellManaCost = 100;
         }
 
+        /*
+         Name : Spell
+         Description : Cast a spell on the enemy
+         Parameters :
+             in out Enemy enemy
+       */
         public override void Spell(Enemy enemy)
         {
             int damages = Attack;

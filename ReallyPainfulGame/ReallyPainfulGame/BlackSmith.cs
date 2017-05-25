@@ -15,6 +15,7 @@ namespace ReallyPainfulGame
             _level = level;
             _items = new List<Item>();
 
+            // Set the equipments that the Blacksmith can sell according to his level
             switch (_level)
             {
                 default:
@@ -55,6 +56,12 @@ namespace ReallyPainfulGame
             }
         }
 
+        /*
+          Name : Talk
+          Description : The blacksmith sells equipments to the player
+          Parameters :
+              in out Player player
+       */
         public override void Talk(Player player)
         {
             bool stay = true;

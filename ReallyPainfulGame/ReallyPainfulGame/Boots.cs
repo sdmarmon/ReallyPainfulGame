@@ -15,11 +15,6 @@ namespace ReallyPainfulGame
             {
                 return _speed;
             }
-
-            set
-            {
-                _speed = value;
-            }
         }
 
         public Boots(string name, int level, int speed,int price) : base(name,level,price)
@@ -27,6 +22,7 @@ namespace ReallyPainfulGame
             _speed = speed;
         }
 
+        /* Construct different types of Boots */
         public static Boots StuddedBoots()
         {
             return new Boots("Bottes cloutées", 1, 10,10);

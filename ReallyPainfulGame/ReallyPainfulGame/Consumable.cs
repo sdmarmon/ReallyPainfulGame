@@ -13,6 +13,12 @@ namespace ReallyPainfulGame
 
         }
 
+        /*
+          Name : Use
+          Description : The consumable is used by the player
+          Parameters :
+              in out Player player
+       */
         public abstract void Use(Player player);
 
     }

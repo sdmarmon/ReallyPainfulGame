@@ -15,17 +15,13 @@ namespace ReallyPainfulGame
             {
                 return _health;
             }
-
-            set
-            {
-                _health = value;
-            }
         }
         public Helmet(string name, int level, int health,int price) : base(name,level,price)
         {
             _health = health;
         }
 
+        /* Construct different types of Helmets */
         public static Helmet FeatherMelon()
         {
             return new Helmet("Melon plume", 1, 10,10);

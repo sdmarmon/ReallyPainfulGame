@@ -80,6 +80,13 @@ namespace ReallyPainfulGame
             Rooms.Add(Direction.East, null);
         }
 
+        /*
+         Name : LinkRoom
+         Description : Link 2 rooms together in order to travel between them
+         Parameters :
+             in out Room room
+             in Direction direction
+       */
         public void LinkRoom(ref Room room, Direction direction)
         {
             Rooms[direction] = room;

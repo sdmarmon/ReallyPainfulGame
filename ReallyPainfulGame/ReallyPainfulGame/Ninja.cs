@@ -11,6 +11,12 @@ namespace ReallyPainfulGame
         {
         }
 
+        /*
+         Name : Spell
+         Description : Cast a spell on the enemy
+         Parameters :
+             in out Enemy enemy
+       */
         public override void Spell(Enemy enemy)
         {
             Mana -= _spellManaCost;

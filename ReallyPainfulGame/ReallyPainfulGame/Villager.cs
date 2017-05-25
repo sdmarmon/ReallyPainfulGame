@@ -11,6 +11,12 @@ namespace ReallyPainfulGame
 
         }
 
+        /*
+         Name : Talk
+         Description : The player and the villager speak together
+         Parameters :
+             in out Player player
+       */
         public abstract void Talk(Player player);
 
         protected int ChooseItem(Player player, List<Item> _items)

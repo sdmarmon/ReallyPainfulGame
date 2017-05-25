@@ -59,7 +59,16 @@ namespace ReallyPainfulGame
             _inventory = new List<Consumable>();
         }
 
-        public bool Battle(Enemy enemy)
+        /*
+         Name : Fighting
+         Description : 
+            Combat infos, menu and actions
+            Return the result of the battle
+         Parameters :
+             in out Enemy enemy
+             out bool win
+        */
+        private bool Fighting(Enemy enemy)
         {
             bool win = false;
             while (Health > 0 && enemy.Health > 0)
@@ -82,19 +91,19 @@ namespace ReallyPainfulGame
                 /* The fastest strikes fisrt */
                 if (Speed >= enemy.Speed)
                 {
-                    BattleAction(enemy);
+                    BattleActions(enemy);
                     if (enemy.Health > 0)
                     {
-                        enemy.Fight(this);
+                        enemy.HitPlayer(this);
                     }
                 }
                 else
                 {
                     if (enemy.Health > 0)
                     {
-                        enemy.Fight(this);
+                        enemy.HitPlayer(this);
                     }
-                    BattleAction(enemy);
+                    BattleActions(enemy);
                 }
             }
             Console.Clear();
@@ -107,7 +116,13 @@ namespace ReallyPainfulGame
             return win;
         }
 
-        public void Fight(Enemy enemy)
+        /*
+         Name : HitEnemy
+         Description : The player deals damages to enemy
+         Parameters :
+             in out Enemy enemy
+        */
+        private void HitEnemy(Enemy enemy)
         {
             int damages = Attack;
             if (Weapon != null)
@@ -119,10 +134,16 @@ namespace ReallyPainfulGame
             Console.WriteLine("Vous attaquez "+enemy.Name+" ! Votre attaque lui retire "+GetDamages(damages,enemy.Defense)+"PV.\n");
         }
 
-        public void LevelUp(Enemy enemy)
+        /*
+         Name : LevelUp
+         Description : Get some experience from the enemy and level up
+         Parameters :
+             in out Enemy enemy
+        */
+        private void LevelUp(Enemy enemy)
         {
             _experience = (int)(10 * Math.Pow(enemy.Level / Level, 2));
-            if (_experience >= 100)
+            if (_experience >= _xpMax)
             {
                 Level++;
                 HealthMax += 5;
@@ -138,7 +159,13 @@ namespace ReallyPainfulGame
 
         }
 
-        public void BattleAction(Enemy enemy)
+        /*
+         Name : BattleActions
+         Description : The player choose an action to perform
+         Parameters :
+             in out Enemy enemy
+        */
+        private void BattleActions(Enemy enemy)
         {
             if (Health > 0)
             {
@@ -158,7 +185,7 @@ namespace ReallyPainfulGame
                 {
                     case "1":
                         Console.Clear();
-                        Fight(enemy);
+                        HitEnemy(enemy);
                         break;
                     case "2":
                         Spell(enemy);
@@ -217,7 +244,13 @@ namespace ReallyPainfulGame
             }
         }
 
-        public void Looting(Enemy enemy)
+        /*
+         Name : Looting
+         Description : Loot the money and the equipment on the enemy
+         Parameters :
+             in out Enemy enemy
+        */
+        private void Looting(Enemy enemy)
         {
             Gold += enemy.Gold;
             switch (enemy.Loot.GetType().Name)
@@ -291,13 +324,18 @@ namespace ReallyPainfulGame
             }
         }
 
-        /* Fight against an enemy */
+        /*
+         Name : Duel
+         Description : Main combat method
+         Parameters :
+             in out Enemy enemy
+        */
         public void Duel()
         {
             if (_currentRoom.Monster != null && _currentRoom.Monster.Health > 0)
             {
                 Enemy monster = _currentRoom.Monster;
-                if (Battle(monster))
+                if (Fighting(monster))
                 {
                     Console.WriteLine("Vous avez tué un " + monster.Name);
                     // Victory ?
@@ -321,7 +359,10 @@ namespace ReallyPainfulGame
             }
         }
 
-        /* Move player */
+        /*
+         Name : Move
+         Description : Display a menu allowing to choose your next room
+       */
         public void Move()
         {
             if (_currentRoom.Npc != null)
@@ -359,20 +400,43 @@ namespace ReallyPainfulGame
             Console.Clear();
         }
 
+        /*
+         Name : Respawn
+         Description : Teleports the player to his respawn location
+       */
         public void Respawn()
         {
             _currentRoom = _spawn;
         }
 
+        /*
+         Name : Spell
+         Description : Cast a spell on the enemy
+         Parameters :
+             in out Enemy enemy
+       */
         public abstract void Spell(Enemy enemy);
 
-        public int SearchItem(string name)
+        /*
+         Name : SearchItem
+         Description : Find the index of an item in the inventory
+         Parameters :
+             in string name
+             out int index
+        */
+        private int SearchItem(string name)
         {
             int index = _inventory.FindIndex(x => x.Name == name);
             return index;
         }
 
-        public void UseConsumable(string name)
+        /*
+         Name : UseConsumable
+         Description : The player uses a consumable and remove it from his inventory
+         Parameters :
+             in string name
+        */
+        private void UseConsumable(string name)
         {
             int index = SearchItem(name);
             if (index != -1)

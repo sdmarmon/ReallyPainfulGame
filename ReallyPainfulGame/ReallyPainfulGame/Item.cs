@@ -40,6 +40,12 @@ namespace ReallyPainfulGame
             return("-- " + _name + " --\n");
         }
 
+        /*
+          Name : Clone
+          Description : Clone the current object 
+          Parameters :
+              out object this
+        */
         public object Clone()
         {
             return this.MemberwiseClone();
