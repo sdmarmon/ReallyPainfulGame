@@ -10,7 +10,8 @@ namespace ReallyPainfulGame
         private int _level;
         private List<Item> _items;
 
-        public BlackSmith(int level) : base(){
+        public BlackSmith(int level) : base()
+        {
             _level = level;
             _items = new List<Item>();
 
@@ -56,30 +57,52 @@ namespace ReallyPainfulGame
 
         public override void Talk(Player player)
         {
-            Console.Clear();
-            Console.WriteLine("Bienvenue chez le forgeron");
-            Console.WriteLine("Quels équipements voulez vous acheter ?");
-            int nbitem = 1;
-            foreach (Item item in _items)
+            bool stay = true;
+            while (stay)
             {
-                Console.WriteLine(nbitem + ": " + item.Name + " " + item.Price + "g");
-                nbitem++;
-            }
-            Console.WriteLine(_items.Count + 1 + ": Dire aurevoir au forgeron");
+                Console.Clear();
+                Console.WriteLine("Bienvenue chez le forgeron");
+                Console.WriteLine("Quels équipements voulez vous acheter ?");
+                int nbitem = 1;
+                foreach (Item item in _items)
+                {
+                    Console.WriteLine(nbitem + ": " + item.Name + " " + item.Price + "g");
+                    nbitem++;
+                }
+                Console.WriteLine(_items.Count + 1 + ": Dire aurevoir au forgeron");
 
-            Console.WriteLine("Vous avez " + player.Gold + " gold");
+                Console.WriteLine("Vous avez " + player.Gold + " gold");
 
-            int itemChosen = ChooseItem(player, _items);
+                int itemChosen = ChooseItem(player, _items);
 
-            Console.Clear();
-            //Doesn't leave the store
-            if (itemChosen != _items.Count + 1)
-            {
-                Console.WriteLine("Vous avez acheté " + _items.ElementAt(itemChosen - 1).Name);
-                // Buy the chosen item
-                player.Gold -= _items.ElementAt(itemChosen - 1).Price;
-                // Sell the current equipment and equip the chosen item
-                player.Inventory.Add((Consumable)_items.ElementAt(itemChosen - 1).Clone());
+                Console.Clear();
+                //Doesn't leave the store
+                if (itemChosen != _items.Count + 1)
+                {
+                    Console.WriteLine("Vous avez acheté " + _items.ElementAt(itemChosen - 1).Name);
+                    // Buy the chosen item
+                    player.Gold -= _items.ElementAt(itemChosen - 1).Price;
+                    // Sell the current equipment and equip the chosen item
+                    player.Inventory.Add((Consumable)_items.ElementAt(itemChosen - 1).Clone());
+                    Console.Clear();
+                    Console.WriteLine("Voulez vous continuer à acheter ?");
+                    Console.WriteLine("1: Oui");
+                    Console.WriteLine("2: Non");
+                    string choice;
+                    do
+                    {
+                        choice = Console.ReadLine();
+                    } while (choice != "1" && choice != "2");
+
+                    if (choice == "2")
+                    {
+                        stay = false;
+                    }
+                }
+                else
+                {
+                    stay = false;
+                }
             }
             Console.WriteLine("Aurevoir");
         }
