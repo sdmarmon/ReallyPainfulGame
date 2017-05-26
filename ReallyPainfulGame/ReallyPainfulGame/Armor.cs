@@ -29,23 +29,23 @@ namespace ReallyPainfulGame
         }
         public static Armor IronCoat()
         {
-            return new Armor("Cotte de fer", 2, 20,20);
+            return new Armor("Cotte de fer", 2, 20,50);
         }
         public static Armor Caparison()
         {
-            return new Armor("Caparaçon", 3, 30,30);
+            return new Armor("Caparaçon", 3, 30,150);
         }
         public static Armor GoldCoat()
         {
-            return new Armor("Côte d’or", 4, 40,40);
+            return new Armor("Côte d’or", 4, 40,400);
         }
         public static Armor DiamondChestpiece()
         {
-            return new Armor("Plastron diamant", 5, 50,50);
+            return new Armor("Plastron diamant", 5, 50,1000);
         }
         public static Armor Maximillien()
         {
-            return new Armor("Maximillien", 6, 75,75);
+            return new Armor("Maximillien", 6, 75,1001);
         }
 
         public override string ToString()

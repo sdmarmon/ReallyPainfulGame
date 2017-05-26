@@ -22,17 +22,13 @@ namespace ReallyPainfulGame
         {
             if (Mana - _spellManaCost >= 0)
             {
-                int damages = Attack;
+                int damages = EffectiveAttack;
                 Mana -= _spellManaCost;
-                if (Weapon != null)
-                {
-                    damages += Weapon.Attack;
-                }
 
                 /* Double damages */
                 Random rnd = new Random();
                 int chance = rnd.Next(100);
-                if (chance <= (10 + Critical / 2))
+                if (chance <= (10 + EffectiveCritical / 2))
                 {
                     damages *= 2;
                     Console.WriteLine("Vous lancez Coups Critiques : vos dégats sont doublés");
@@ -54,7 +50,7 @@ namespace ReallyPainfulGame
 
         public override string ToString()
         {
-            return ("------------------\nSpadassin niveau " + Level + "\n" + base.ToString());
+            return ("------------------\n" + Name + " : Spadassin niveau " + Level + "\n" + base.ToString());
         }
     }
 }

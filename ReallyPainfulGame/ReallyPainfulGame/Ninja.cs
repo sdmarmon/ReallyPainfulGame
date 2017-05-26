@@ -22,17 +22,13 @@ namespace ReallyPainfulGame
         {
             if (Mana - _spellManaCost >= 0)
             {
-                int damages = Attack;
+                int damages = EffectiveAttack;
                 Mana -= _spellManaCost;
-                if (Weapon != null)
-                {
-                    damages += Weapon.Attack;
-                }
 
                 /* True damages */
                 Random rnd = new Random();
                 int chance = rnd.Next(100);
-                if (chance <= (10 + Critical / 2))
+                if (chance <= (10 + EffectiveCritical / 2))
                 {
                     enemy.Health -= damages;
                     Console.WriteLine("Vous lancez Attaque Furtive");
@@ -54,7 +50,7 @@ namespace ReallyPainfulGame
 
         public override string ToString()
         {
-            return ("------------------\nNinja niveau " + Level + "\n" + base.ToString());
+            return ("------------------\n" + Name +" : Ninja niveau " + Level + "\n" + base.ToString());
         }
     }
 }

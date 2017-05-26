@@ -41,7 +41,7 @@ namespace ReallyPainfulGame
                     Console.WriteLine(nbitem + ": " + item.Name + " " + item.Price + "g");
                     nbitem++;
                 }
-                Console.WriteLine(_items.Count + 1 + ": Dire aurevoir à l'alchimiste");
+                Console.WriteLine(_items.Count + 1 + ": Dire au revoir à l'alchimiste");
 
                 Console.WriteLine("Vous avez " + player.Gold + " gold");
 
@@ -77,7 +77,7 @@ namespace ReallyPainfulGame
                     stay = false;
                 }
             }
-            Console.WriteLine("Aurevoir");
+            Console.WriteLine("Au revoir");
 
         }
     }

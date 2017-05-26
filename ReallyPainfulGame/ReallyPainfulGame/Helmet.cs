@@ -28,23 +28,23 @@ namespace ReallyPainfulGame
         }
         public static Helmet RomanHelmet()
         {
-            return new Helmet("Casque romain", 2, 20,20);
+            return new Helmet("Casque romain", 2, 20,50);
         }
         public static Helmet IronHelmet()
         {
-            return new Helmet("Casque de fer", 3, 30,30);
+            return new Helmet("Casque de fer", 3, 30,150);
         }
         public static Helmet GenjiHelmet()
         {
-            return new Helmet("Casque genji", 4, 40,40);
+            return new Helmet("Casque genji", 4, 40,400);
         }
         public static Helmet DiamondHelmet()
         {
-            return new Helmet("Casque diamant", 5, 50,50);
+            return new Helmet("Casque diamant", 5, 50,1000);
         }
         public static Helmet VangaadHelmet()
         {
-            return new Helmet("Casque vangaa", 6, 75,75);
+            return new Helmet("Casque vangaa", 6, 75,1001);
         }
 
         public override string ToString()

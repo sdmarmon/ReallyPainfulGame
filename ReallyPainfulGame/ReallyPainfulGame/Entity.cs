@@ -169,7 +169,7 @@ namespace ReallyPainfulGame
           Name : Regeneration
           Description : Restore all the Health and Mana
         */
-        public void Regeneration()
+        public virtual void Regeneration()
         {
             Health = HealthMax;
             Mana = ManaMax;

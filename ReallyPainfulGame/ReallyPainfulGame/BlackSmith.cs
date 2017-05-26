@@ -86,11 +86,95 @@ namespace ReallyPainfulGame
                 //Doesn't leave the store
                 if (itemChosen != _items.Count + 1)
                 {
-                    Console.WriteLine("Vous avez acheté " + _items.ElementAt(itemChosen - 1).Name);
+                    Console.WriteLine("Vous avez acheté " + _items.ElementAt(itemChosen - 1));
+                    Console.ReadLine();
                     // Buy the chosen item
                     player.Gold -= _items.ElementAt(itemChosen - 1).Price;
                     // Sell the current equipment and equip the chosen item
-                    player.Inventory.Add((Consumable)_items.ElementAt(itemChosen - 1).Clone());
+                    Equipment boughtItem = (Equipment)(_items.ElementAt(itemChosen - 1));
+
+                    switch (boughtItem.GetType().Name)
+                    {
+                        case "Armor":
+                            if (player.Armor != null)
+                            {
+                                if (boughtItem.Level > player.Armor.Level)
+                                {
+                                    player.Armor = boughtItem as Armor;
+                                    player.EffectiveDefense = player.Defense + player.Armor.Defense;
+                                }
+                            }
+                            else
+                            {
+                                player.Armor = boughtItem as Armor;
+                                player.EffectiveDefense = player.Defense + player.Armor.Defense;
+                            }
+                            break;
+                        case "Boots":
+                            if (player.Boots != null)
+                            {
+                                if (boughtItem.Level > player.Boots.Level)
+                                {
+                                    player.Boots = boughtItem as Boots;
+                                    player.EffectiveSpeed = player.Speed + player.Boots.Speed;
+                                }
+                            }
+                            else
+                            {
+                                player.Boots = boughtItem as Boots;
+                                player.EffectiveSpeed = player.Speed + player.Boots.Speed;
+                            }
+                            break;
+                        case "Gloves":
+                            if (player.Gloves != null)
+                            {
+                                if (boughtItem.Level > player.Gloves.Level)
+                                {
+                                    player.Gloves = boughtItem as Gloves;
+                                    player.EffectiveCritical = player.EffectiveCritical + player.Gloves.Critical;
+                                }
+                            }
+                            else
+                            {
+                                player.Gloves = boughtItem as Gloves;
+                                player.EffectiveCritical = player.EffectiveCritical + player.Gloves.Critical;
+                            }
+                            break;
+                        case "Helmet":
+                            if (player.Helmet != null)
+                            {
+                                if (boughtItem.Level > player.Helmet.Level)
+                                {
+                                    player.Helmet = boughtItem as Helmet;
+                                    player.EffectiveHealth = player.HealthMax + player.Helmet.Health;
+                                }
+                            }
+                            else
+                            {
+                                player.Helmet = boughtItem as Helmet;
+                                player.EffectiveHealth = player.HealthMax + player.Helmet.Health;
+
+                            }
+                            break;
+                        case "Weapon":
+                            if (player.Weapon != null)
+                            {
+                                if (boughtItem.Level > player.Weapon.Level)
+                                {
+                                    player.Weapon = boughtItem as Weapon;
+                                    player.EffectiveAttack = player.EffectiveAttack + player.Weapon.Attack;
+                                }
+                            }
+                            else
+                            {
+                                player.Weapon = boughtItem as Weapon;
+                                player.EffectiveAttack = player.EffectiveAttack + player.Weapon.Attack;
+                            }
+
+                            break;
+                    }
+                    // Equips the purchased item
+
                     Console.Clear();
                     Console.WriteLine("Voulez vous continuer à acheter ?");
                     Console.WriteLine("1: Oui");
