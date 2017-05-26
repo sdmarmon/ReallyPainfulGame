@@ -43,7 +43,7 @@ namespace ReallyPainfulGame
                     {
                         Health += heal;
                     }
-                    Console.WriteLine("Vous lancez Gloire du Juste : vous vous soignez des dégats ingligés");
+                    Console.WriteLine("Vous lancez Drain : vous vous soignez des dégats ingligés");
                     Console.WriteLine("Drain vous soigne de " + GetDamages(damages, enemy.Defense) + "PV.");
                 }
                 else
