@@ -14,16 +14,14 @@ namespace ReallyPainfulGame
             //playerCreation();
 
             Init();
-            while (!_player.Win)
+            while (!_player.Leave)
             {
                 _player.Duel();
-                if (!_player.Win)
+                if (!_player.Leave)
                 {
                     _player.Move();
                 }
             }
-
-            Console.WriteLine("Bravo vous avez fini le jeu");
 
             Console.ReadLine();
         }
@@ -78,7 +76,7 @@ namespace ReallyPainfulGame
 
             Alchemist alchemist = new Alchemist();
             Room room1 = new Room("room 0.0", "Ceci est la room 0.0", null, null);
-            _player = new Squire("Moi", room1);
+            _player = new Ninja("Moi", room1);
             _player.Inventory.Add(Potion.SimplePotion());
             Room room2 = new Room("room 1.0", "Ceci est la room 1.0", Enemy.BossDragon(), null);
             Room room3 = new Room("room 2.0", "Ceci est la room 2.0", null, null);

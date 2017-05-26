@@ -7,9 +7,9 @@ namespace ReallyPainfulGame
 {
     public class Squire : Player
     {
-        public Squire(string name, Room spawn) : base(name, 11, 11, 10, 11,spawn)
+        public Squire(string name, Room spawn) : base(name, 11, 11, 10, 11, spawn)
         {
-            _spellManaCost = 100;
+            _spellManaCost = 10;
         }
 
         /*
@@ -20,22 +20,35 @@ namespace ReallyPainfulGame
        */
         public override void Spell(Enemy enemy)
         {
-            int damages = Attack;
-            Mana -= _spellManaCost;
-            /* Extra damages from the spell */
-            Random rnd = new Random();
-            int chance = rnd.Next(100);
-            if (chance <= (5 + Critical))
+            if (Mana - _spellManaCost >= 0)
             {
-                damages += Critical;
-            }
-            
-            if (Weapon != null)
-            {
-                damages += Weapon.Attack;
-            }
+                int damages = Attack;
+                Mana -= _spellManaCost;
+                if (Weapon != null)
+                {
+                    damages += Weapon.Attack;
+                }
 
-            enemy.Health -= enemy.Health -= GetDamages(damages, enemy.Defense);
+                /* Extra damages from the spell */
+                Random rnd = new Random();
+                int chance = rnd.Next(100);
+                if (chance <= (5 + Critical))
+                {
+                    damages += Critical;
+                    Console.WriteLine("Vous lancez Gloire du Juste : vous infligez des dégats supplémentaires");
+                }
+                else
+                {
+                    Console.WriteLine("Echec du sort !");
+                }
+                enemy.Health -= GetDamages(damages, enemy.Defense);
+                Console.WriteLine("Vous attaquez " + enemy.Name + " ! Votre attaque lui retire " + GetDamages(damages, enemy.Defense) + "PV.\n");
+            }
+            else
+            {
+                Console.WriteLine("Désolé, vous n'avez pas assez de Mana !");
+                HitEnemy(enemy);
+            }
         }
     }
 }

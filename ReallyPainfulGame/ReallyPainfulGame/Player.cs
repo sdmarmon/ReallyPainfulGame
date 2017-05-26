@@ -9,7 +9,7 @@ namespace ReallyPainfulGame
     {
         private const int _xpMax = 100;
         private int _experience;
-        private bool _win;
+        private bool _leave;
         private Armor _armor;
         private Boots _boots;
         private Gloves _gloves;
@@ -42,17 +42,17 @@ namespace ReallyPainfulGame
             }
         }
 
-        public bool Win
+        public bool Leave
         {
             get
             {
-                return _win;
+                return _leave;
             }
         }
 
         public Player(string name, int attack, int defense, int critical, int speed, Room spawn) : base(name, 1, 100, 100, attack, defense, critical, speed, 0)
         {
-            _win = false;
+            _leave = false;
             _experience = 0;
             _spawn = spawn;
             Respawn();
@@ -122,7 +122,7 @@ namespace ReallyPainfulGame
          Parameters :
              in out Enemy enemy
         */
-        private void HitEnemy(Enemy enemy)
+        protected void HitEnemy(Enemy enemy)
         {
             int damages = Attack;
             if (Weapon != null)
@@ -188,6 +188,7 @@ namespace ReallyPainfulGame
                         HitEnemy(enemy);
                         break;
                     case "2":
+                        Console.Clear();
                         Spell(enemy);
                         break;
                     case "3":
@@ -341,7 +342,21 @@ namespace ReallyPainfulGame
                     // Victory ?
                     if(monster.Name == "Boss Dragon")
                     {
-                        _win = true;
+                        Console.WriteLine("Bravo vous avez terminé le jeu\n");
+                        Console.WriteLine("Voulez vous continuer de jouer ?");
+                        Console.WriteLine("1: Oui");
+                        Console.WriteLine("2: Non");
+                        /* Check the action */
+                        string choice;
+                        do
+                        {
+                            choice = Console.ReadLine();
+                        } while (choice != "1" && choice != "2");
+
+                        if(choice == "2")
+                        {
+                            _leave = true;
+                        }
                     }
 
                     LevelUp(monster);
