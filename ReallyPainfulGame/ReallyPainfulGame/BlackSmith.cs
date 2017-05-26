@@ -73,10 +73,10 @@ namespace ReallyPainfulGame
                 int nbitem = 1;
                 foreach (Item item in _items)
                 {
-                    Console.WriteLine(nbitem + ": " + item.Name + " " + item.Price + "g");
+                    Console.WriteLine(nbitem + ": " + item);
                     nbitem++;
                 }
-                Console.WriteLine(_items.Count + 1 + ": Dire aurevoir au forgeron");
+                Console.WriteLine(_items.Count + 1 + ": Dire au revoir au forgeron");
 
                 Console.WriteLine("Vous avez " + player.Gold + " gold");
 
@@ -111,7 +111,7 @@ namespace ReallyPainfulGame
                     stay = false;
                 }
             }
-            Console.WriteLine("Aurevoir");
+            Console.WriteLine("Au revoir");
         }
     }
 }

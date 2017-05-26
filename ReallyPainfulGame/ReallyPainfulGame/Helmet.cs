@@ -46,5 +46,10 @@ namespace ReallyPainfulGame
         {
             return new Helmet("Casque vangaa", 6, 75,75);
         }
+
+        public override string ToString()
+        {
+            return (base.ToString() + ", " + Health + "PV");
+        }
     }
 }

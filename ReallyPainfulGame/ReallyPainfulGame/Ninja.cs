@@ -22,5 +22,9 @@ namespace ReallyPainfulGame
             Mana -= _spellManaCost;
         }
 
+        public override string ToString()
+        {
+            return ("------------------\nNinja niveau " + Level + "\n" + base.ToString());
+        }
     }
 }

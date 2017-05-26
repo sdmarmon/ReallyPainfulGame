@@ -16,6 +16,12 @@ namespace ReallyPainfulGame
         private Helmet _helmet;
         private Weapon _weapon;
 
+        private int _effectiveHealth;
+        private int _effectiveAttack;
+        private int _effectiveDefense;
+        private int _effectiveCritical;
+        private int _effectiveSpeed;
+
         private Room _currentRoom;
         private Room _spawn;
 
@@ -50,6 +56,19 @@ namespace ReallyPainfulGame
             }
         }
 
+        public int EffectiveDefense
+        {
+            get
+            {
+                return _effectiveDefense;
+            }
+
+            set
+            {
+                _effectiveDefense = value;
+            }
+        }
+
         public Player(string name, int attack, int defense, int critical, int speed, Room spawn) : base(name, 1, 100, 100, attack, defense, critical, speed, 0)
         {
             _win = false;
@@ -57,6 +76,11 @@ namespace ReallyPainfulGame
             _spawn = spawn;
             Respawn();
             _inventory = new List<Consumable>();
+            _effectiveHealth = HealthMax;
+            _effectiveAttack = Attack;
+            EffectiveDefense = Defense;
+            _effectiveSpeed = Speed;
+            _effectiveCritical = Critical;
         }
 
         /*
@@ -78,7 +102,7 @@ namespace ReallyPainfulGame
                 Console.WriteLine("Hp: " + enemy.Health + "/" + enemy.HealthMax);
                 Console.WriteLine("------------------");
                 Console.WriteLine("--- " + Name + " ---");
-                Console.WriteLine("Hp: " + Health + "/" + HealthMax);
+                Console.WriteLine("Hp: " + Health + "/" + _effectiveHealth);
                 Console.WriteLine("Mp: " + Mana + "/" + ManaMax);
                 Console.WriteLine("------------------");
                 Console.WriteLine("1: Attaque basique");
@@ -124,14 +148,8 @@ namespace ReallyPainfulGame
         */
         private void HitEnemy(Enemy enemy)
         {
-            int damages = Attack;
-            if (Weapon != null)
-            {
-                damages += Weapon.Attack;
-            }
-
-            enemy.Health -= GetDamages(damages, enemy.Defense);
-            Console.WriteLine("Vous attaquez "+enemy.Name+" ! Votre attaque lui retire "+GetDamages(damages,enemy.Defense)+"PV.\n");
+            enemy.Health -= GetDamages(_effectiveAttack, enemy.Defense);
+            Console.WriteLine("Vous attaquez "+enemy.Name+" ! Votre attaque lui retire "+GetDamages(_effectiveAttack,enemy.Defense)+"PV.\n");
         }
 
         /*
@@ -261,11 +279,13 @@ namespace ReallyPainfulGame
                         if (enemy.Loot.Level > _armor.Level)
                         {
                             _armor = enemy.Loot as Armor;
+                            EffectiveDefense = Defense + _armor.Defense;
                         }
                     }
                     else
                     {
                         _armor = enemy.Loot as Armor;
+                        EffectiveDefense = Defense + _armor.Defense;
                     }
                     break;
                 case "Boots":
@@ -274,11 +294,13 @@ namespace ReallyPainfulGame
                         if (enemy.Loot.Level > _boots.Level)
                         {
                             _boots = enemy.Loot as Boots;
+                            _effectiveSpeed = Speed + _boots.Speed;
                         }
                     }
                     else
                     {
                         _boots = enemy.Loot as Boots;
+                        _effectiveSpeed = Speed + _boots.Speed;
                     }
                     break;
                 case "Gloves":
@@ -287,11 +309,13 @@ namespace ReallyPainfulGame
                         if (enemy.Loot.Level > _gloves.Level)
                         {
                             _gloves = enemy.Loot as Gloves;
+                            _effectiveCritical = Critical + _gloves.Critical;
                         }
                     }
                     else
                     {
                         _gloves = enemy.Loot as Gloves;
+                        _effectiveCritical = Critical + _gloves.Critical;
                     }
                     break;
                 case "Helmet":
@@ -300,11 +324,13 @@ namespace ReallyPainfulGame
                         if (enemy.Loot.Level > _helmet.Level)
                         {
                             _helmet = enemy.Loot as Helmet;
+                            _effectiveHealth = HealthMax + _helmet.Health;
                         }
                     }
                     else
                     {
                         _helmet = enemy.Loot as Helmet;
+                        _effectiveHealth = HealthMax + _helmet.Health;
                     }
                     break;
                 case "Weapon":
@@ -313,13 +339,15 @@ namespace ReallyPainfulGame
                         if (enemy.Loot.Level > _weapon.Level)
                         {
                             _weapon = enemy.Loot as Weapon;
+                            _effectiveAttack = Attack + _weapon.Attack;
                         }
                     }
                     else
                     {
                         _weapon = enemy.Loot as Weapon;
+                        _effectiveAttack = Attack + _weapon.Attack;
                     }
-                    
+
                     break;
             }
         }
@@ -452,6 +480,18 @@ namespace ReallyPainfulGame
         public void DisplayEquipment()
         {
 
+        }
+
+        public override string ToString()
+        {
+            string s = "------------------\n";
+            s += "\nPV : " + (this.Health) + "/" + (_effectiveHealth);
+            s += "\nMana : " + (this.Mana) + "/" + (ManaMax);
+            s += "\nAttaque : " + (_effectiveAttack);
+            s += "\nDéfense : " + (EffectiveDefense);
+            s += "\nVitesse : " + (_effectiveSpeed);
+            s += "\nCritique : " + (_effectiveCritical);
+            return s;
         }
     }
 

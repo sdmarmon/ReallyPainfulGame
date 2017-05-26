@@ -29,9 +29,7 @@ namespace ReallyPainfulGame
 
         public override string ToString()
         {
-            string text = base.ToString();
-            text += "";
-            return text;
+            return base.ToString();
         }
 
     }

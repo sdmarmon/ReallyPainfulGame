@@ -37,5 +37,10 @@ namespace ReallyPainfulGame
 
             enemy.Health -= enemy.Health -= GetDamages(damages, enemy.Defense);
         }
+
+        public override string ToString()
+        {
+            return ("------------------\nEcuyer niveau " + Level + "\n" + base.ToString());
+        }
     }
 }

@@ -47,5 +47,10 @@ namespace ReallyPainfulGame
         {
             return new Gloves("Gants mog", 6, 75,75);
         }
+
+        public override string ToString()
+        {
+            return (base.ToString() + ", " + Critical + "crit");
+        }
     }
 }

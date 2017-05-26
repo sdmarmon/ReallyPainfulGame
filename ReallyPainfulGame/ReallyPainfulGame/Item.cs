@@ -37,7 +37,7 @@ namespace ReallyPainfulGame
 
         public override string ToString()
         {
-            return("-- " + _name + " --\n");
+            return(Name + ", " + Price + "g");
         }
 
         /*
