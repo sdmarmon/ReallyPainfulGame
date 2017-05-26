@@ -184,7 +184,15 @@ namespace ReallyPainfulGame
         */
         public int GetDamages(int attack, int defense)
         {
-            return ((int)(((2 * attack - defense) / 2) * Math.Pow(attack, 1 / 3) / Math.Sqrt(defense)));
+            int dmg = ((int)(((2 * attack - defense) / 2) * Math.Pow(attack, 1 / 3) / Math.Sqrt(defense)));
+            if (dmg > 1) 
+            {
+                return dmg;
+            }
+            else
+            {
+                return 1;
+            }
         }
     }
 }

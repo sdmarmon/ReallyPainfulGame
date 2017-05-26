@@ -370,9 +370,6 @@ namespace ReallyPainfulGame
                                 UseConsumable("Potion X");
                                 break;
                         }
-
-                        break;
-                    case "4":
                         break;
                 }
             }
@@ -695,7 +692,12 @@ namespace ReallyPainfulGame
         public void DisplayMap()
         {
             Console.WriteLine("Voici la disposition des villes d'Ivalice");
-            Console.WriteLine("------------------");
+            Console.WriteLine("------------------\n");
+            Console.WriteLine("\t\t\t ---------------------------- ");
+            Console.WriteLine("\t\t\t| {Forgeron} |   {Sortie}   |");
+            Console.WriteLine("\t\t\t ----------------------------- ");
+            Console.WriteLine("\t\t\t|  {Entrée}  | {Alchimiste} |");
+            Console.WriteLine("\t\t\t ---------------------------- ");
             Console.ReadLine();
         }
 
@@ -713,6 +715,11 @@ namespace ReallyPainfulGame
             Console.WriteLine("La commande Inventaire vous permet d'afficher l'ensemble de vos consommables, ainsi que votre or.");
             Console.WriteLine("La commande Equipement vous permet d'afficher votre équipement courant.");
             Console.WriteLine("La commande Stats vous permet d'afficher vos statistiques courantes.");
+            Console.WriteLine("\nExplorez la contrée d'Ivalice et forgez votre réputation.");
+            Console.WriteLine("Rencontrez les PNJ dans les villes & des monstres redoutables dans les donjons.");
+            Console.WriteLine("Abattez un maximum de monstres pour monter en niveau et obtenir leur équipement.");
+            Console.WriteLine("Débarassez-vous du boss du donjon pour accéder à la ville suivante.");
+            Console.WriteLine("Terrassez Adrammelech, boss des dragons et libérez Ivalice de son emprise !");
             Console.ReadLine();
         }
 
