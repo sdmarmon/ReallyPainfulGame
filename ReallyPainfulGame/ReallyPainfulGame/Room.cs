@@ -9,7 +9,6 @@ namespace ReallyPainfulGame
     public class Room
     {
         private string _name;
-        private string _description;
         private Enemy _monster;
         private Villager _npc;
         private Dictionary<Direction, Room> _rooms;
@@ -24,18 +23,6 @@ namespace ReallyPainfulGame
             set
             {
                 _name = value;
-            }
-        }
-        public string Description
-        {
-            get
-            {
-                return _description;
-            }
-
-            set
-            {
-                _description = value;
             }
         }
         public Enemy Monster
@@ -68,7 +55,7 @@ namespace ReallyPainfulGame
             }
         }
 
-        public Room(string name, string description, Enemy monster, Villager npc)
+        public Room(string name, Enemy monster, Villager npc)
         {
             Name = name;
             Rooms = new Dictionary<Direction, Room>();

@@ -40,7 +40,7 @@ namespace ReallyPainfulGame
             Console.WriteLine(this.Name + " vous attaque ! Il vous retire " + GetDamages(Attack, player.EffectiveDefense) + "PV.\n");
         }
 
-        public static Enemy Gobelin()
+        public static Enemy Goblin()
         {
             Equipment loot = null;
             int randomNumber = _rnd.Next(1,6);
@@ -161,7 +161,7 @@ namespace ReallyPainfulGame
             }
             return new Enemy("Dragon", 40, 55, 100, 55, 55, 12, 42, 50, loot);
         }
-        public static Enemy BossGobelin()
+        public static Enemy BossGoblin()
         {
             return new Enemy("Boss Gobelin", 9, 50, 100, 20, 25, 5, 15, 20, Gloves.MogGloves());
         }
