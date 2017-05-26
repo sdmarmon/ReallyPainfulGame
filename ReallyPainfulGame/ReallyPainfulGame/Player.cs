@@ -503,9 +503,9 @@ namespace ReallyPainfulGame
                 {
                     Console.WriteLine("Vous avez tué un " + monster.Name);
                     // Victory ?
-                    if(monster.Name == "Boss Dragon")
+                    if(monster.Name == "Adrammelech")
                     {
-                        Console.WriteLine("Bravo vous avez terminé le jeu\n");
+                        Console.WriteLine("Vous avez vaincu Adrammelech et libéré Ivalice de son enprise !\n");
                         Console.WriteLine("Voulez vous continuer de jouer ?");
                         Console.WriteLine("1: Oui");
                         Console.WriteLine("2: Non");

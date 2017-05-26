@@ -87,7 +87,7 @@ namespace ReallyPainfulGame
                     loot = Helmet.RomanHelmet();
                     break;
             }
-            return new Enemy("Troll", 1, 10, 100, 10, 5, 2, 10, 10, loot);
+            return new Enemy("Troll", 10, 25, 100, 20, 25, 5, 15, 20, loot);
         }
         public static Enemy Centaur()
         {
@@ -111,7 +111,7 @@ namespace ReallyPainfulGame
                     loot = Helmet.IronHelmet();
                     break;
             }
-            return new Enemy("Centaure", 1, 10, 100, 10, 5, 2, 10, 10, loot);
+            return new Enemy("Centaure", 20, 33, 100, 30, 30, 10, 40, 30, loot);
         }
         public static Enemy Orc()
         {
@@ -135,7 +135,7 @@ namespace ReallyPainfulGame
                     loot = Helmet.GenjiHelmet();
                     break;
             }
-            return new Enemy("Orc", 1, 10, 100, 10, 5, 2, 10, 10, loot);
+            return new Enemy("Orc", 30, 40, 100, 45, 35, 11, 35, 40, loot);
         }
         public static Enemy Dragon()
         {
@@ -159,27 +159,27 @@ namespace ReallyPainfulGame
                     loot = Helmet.DiamondHelmet();
                     break;
             }
-            return new Enemy("Dragon", 1, 10, 100, 10, 5, 2, 10, 10, loot);
+            return new Enemy("Dragon", 40, 55, 100, 55, 55, 12, 42, 50, loot);
         }
         public static Enemy BossGobelin()
         {
-            return new Enemy("Boss Gobelin", 1, 10, 100, 10, 5, 2, 10, 10, Armor.Maximillien());
+            return new Enemy("Boss Gobelin", 9, 50, 100, 20, 25, 5, 15, 20, Gloves.MogGloves());
         }
         public static Enemy BossTroll()
         {
-            return new Enemy("Boss Troll", 1, 10, 100, 10, 5, 2, 10, 10, Boots.SevenLeagueBoots());
+            return new Enemy("Boss Troll", 19, 100, 100, 30, 30, 10, 40, 30, Helmet.VangaadHelmet());
         }
         public static Enemy BossCentaur()
         {
-            return new Enemy("Boss Centaur", 1, 10, 100, 10, 5, 2, 10, 10, Gloves.MogGloves());
+            return new Enemy("Boss Centaur", 29, 200, 100, 45, 35, 11, 35, 40, Boots.SevenLeagueBoots());
         }
         public static Enemy BossOrc()
         {
-            return new Enemy("Boss Orc", 1, 10, 100, 10, 5, 2, 10, 10, Helmet.VangaadHelmet());
+            return new Enemy("Boss Orc", 39, 400, 100, 55, 55, 12, 42, 50, Armor.Maximillien());
         }
         public static Enemy BossDragon()
         {
-            return new Enemy("Boss Dragon", 1, 10, 100, 10, 5, 2, 10, 10, Weapon.Excalibur());
+            return new Enemy("Adrammelech", 49, 1000, 100, 100, 100, 100, 100, 100, Weapon.Excalibur());
         }
     }
 }

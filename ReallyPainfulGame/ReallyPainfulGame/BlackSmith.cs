@@ -86,7 +86,8 @@ namespace ReallyPainfulGame
                 //Doesn't leave the store
                 if (itemChosen != _items.Count + 1)
                 {
-                    Console.WriteLine("Vous avez acheté " + _items.ElementAt(itemChosen - 1).Name);
+                    Console.WriteLine("Vous avez acheté " + _items.ElementAt(itemChosen - 1));
+                    Console.ReadLine();
                     // Buy the chosen item
                     player.Gold -= _items.ElementAt(itemChosen - 1).Price;
                     // Sell the current equipment and equip the chosen item
@@ -152,6 +153,7 @@ namespace ReallyPainfulGame
                             {
                                 player.Helmet = boughtItem as Helmet;
                                 player.EffectiveHealth = player.HealthMax + player.Helmet.Health;
+
                             }
                             break;
                         case "Weapon":
