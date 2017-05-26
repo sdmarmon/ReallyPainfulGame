@@ -33,7 +33,7 @@ namespace ReallyPainfulGame
 
         public override string ToString()
         {
-            return (base.ToString() + "Vous rend " + this._health + "PV.\n");
+            return (base.ToString() + ", +" + this._health + "PV");
         }
 
         /* Construct different types of Potions */

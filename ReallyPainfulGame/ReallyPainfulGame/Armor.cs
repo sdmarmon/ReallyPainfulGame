@@ -47,5 +47,10 @@ namespace ReallyPainfulGame
         {
             return new Armor("Maximillien", 6, 75,75);
         }
+
+        public override string ToString()
+        {
+            return (base.ToString() + ", " + Defense + "def");
+        }
     }
 }

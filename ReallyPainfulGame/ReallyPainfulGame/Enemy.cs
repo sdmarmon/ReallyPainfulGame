@@ -36,8 +36,8 @@ namespace ReallyPainfulGame
         */
         public void HitPlayer(Player player)
         {
-            player.Health -= GetDamages(Attack, player.Defense);
-            Console.WriteLine(this.Name + " vous attaque ! Il vous retire " + GetDamages(Attack, player.Defense) + "PV.\n");
+            player.Health -= GetDamages(Attack, player.EffectiveDefense);
+            Console.WriteLine(this.Name + " vous attaque ! Il vous retire " + GetDamages(Attack, player.EffectiveDefense) + "PV.\n");
         }
 
         public static Enemy Gobelin()

@@ -51,5 +51,10 @@ namespace ReallyPainfulGame
         {
             return new Weapon("Excalibur", 6, 75,75);
         }
+
+        public override string ToString()
+        {
+            return (base.ToString() + ", " + Attack + "atk");
+        }
     }
 }

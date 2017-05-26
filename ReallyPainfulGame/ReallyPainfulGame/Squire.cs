@@ -50,5 +50,10 @@ namespace ReallyPainfulGame
                 HitEnemy(enemy);
             }
         }
+
+        public override string ToString()
+        {
+            return ("------------------\nEcuyer niveau " + Level + "\n" + base.ToString());
+        }
     }
 }

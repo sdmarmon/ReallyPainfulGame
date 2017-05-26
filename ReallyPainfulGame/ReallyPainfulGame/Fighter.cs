@@ -51,5 +51,10 @@ namespace ReallyPainfulGame
                 HitEnemy(enemy);
             }
         }
+
+        public override string ToString()
+        {
+            return ("------------------\nSpadassin niveau " + Level + "\n" + base.ToString());
+        }
     }
 }

@@ -48,5 +48,9 @@ namespace ReallyPainfulGame
             return new Boots("Bottes de 7 lieues", 6, 75,75);
         }
 
+        public override string ToString()
+        {
+            return (base.ToString() + ", " + Speed + "vit");
+        }
     }
 }
