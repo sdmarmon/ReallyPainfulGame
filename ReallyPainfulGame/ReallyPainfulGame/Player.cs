@@ -9,7 +9,7 @@ namespace ReallyPainfulGame
     {
         private const int _xpMax = 100;
         private int _experience;
-        private bool _win;
+        private bool _leave;
         private Armor _armor;
         private Boots _boots;
         private Gloves _gloves;
@@ -48,11 +48,11 @@ namespace ReallyPainfulGame
             }
         }
 
-        public bool Win
+        public bool Leave
         {
             get
             {
-                return _win;
+                return _leave;
             }
         }
 
@@ -71,7 +71,7 @@ namespace ReallyPainfulGame
 
         public Player(string name, int attack, int defense, int critical, int speed, Room spawn) : base(name, 1, 100, 100, attack, defense, critical, speed, 0)
         {
-            _win = false;
+            _leave = false;
             _experience = 0;
             _spawn = spawn;
             Respawn();
@@ -146,7 +146,7 @@ namespace ReallyPainfulGame
          Parameters :
              in out Enemy enemy
         */
-        private void HitEnemy(Enemy enemy)
+        protected void HitEnemy(Enemy enemy)
         {
             enemy.Health -= GetDamages(_effectiveAttack, enemy.Defense);
             Console.WriteLine("Vous attaquez "+enemy.Name+" ! Votre attaque lui retire "+GetDamages(_effectiveAttack,enemy.Defense)+"PV.\n");
@@ -206,6 +206,7 @@ namespace ReallyPainfulGame
                         HitEnemy(enemy);
                         break;
                     case "2":
+                        Console.Clear();
                         Spell(enemy);
                         break;
                     case "3":
@@ -369,7 +370,21 @@ namespace ReallyPainfulGame
                     // Victory ?
                     if(monster.Name == "Boss Dragon")
                     {
-                        _win = true;
+                        Console.WriteLine("Bravo vous avez terminé le jeu\n");
+                        Console.WriteLine("Voulez vous continuer de jouer ?");
+                        Console.WriteLine("1: Oui");
+                        Console.WriteLine("2: Non");
+                        /* Check the action */
+                        string choice;
+                        do
+                        {
+                            choice = Console.ReadLine();
+                        } while (choice != "1" && choice != "2");
+
+                        if(choice == "2")
+                        {
+                            _leave = true;
+                        }
                     }
 
                     LevelUp(monster);
@@ -399,10 +414,9 @@ namespace ReallyPainfulGame
             }
             Console.WriteLine(_currentRoom);
             Console.WriteLine("Choisissez une direction");
-            Console.WriteLine("1: Nord");
-            Console.WriteLine("2: Sud");
-            Console.WriteLine("3: Ouest");
-            Console.WriteLine("4: Est");
+            Console.WriteLine("        1:Nord");
+            Console.WriteLine("3:Ouest"+"        "+ "4:Est");
+            Console.WriteLine("        2:Sud");
             Console.WriteLine("------------------");
 
             string choice = "";
