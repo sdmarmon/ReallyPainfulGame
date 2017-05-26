@@ -522,6 +522,7 @@ namespace ReallyPainfulGame
                     LevelUp(monster);
                     /* Loot enemy */
                     Looting(monster);
+                    monster.Regeneration();
 
                 }
                 else
