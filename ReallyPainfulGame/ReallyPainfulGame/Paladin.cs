@@ -22,22 +22,18 @@ namespace ReallyPainfulGame
         {
             if (Mana - _spellManaCost >= 0)
             {
-                int damages = Attack;
+                int damages = EffectiveAttack;
                 Mana -= _spellManaCost;
-                if (Weapon != null)
-                {
-                    damages += Weapon.Attack;
-                }
 
                 /* Heal */
                 Random rnd = new Random();
                 int chance = rnd.Next(100);
-                if (chance <= (10 + Critical / 2))
+                if (chance <= (10 + EffectiveCritical / 2))
                 {
                     int heal = GetDamages(damages, enemy.Defense);
-                    if (Health + heal >= HealthMax)
+                    if (Health + heal >= EffectiveHealth)
                     {
-                        Health = HealthMax;
+                        Health = EffectiveHealth;
                     }
                     else
                     {
@@ -63,7 +59,7 @@ namespace ReallyPainfulGame
 
         public override string ToString()
         {
-            return ("------------------\nPaladin niveau " + Level + "\n" + base.ToString());
+            return ("------------------\n" + Name + " : Paladin niveau " + Level + "\n" + base.ToString());
         }
     }
 }

@@ -22,19 +22,15 @@ namespace ReallyPainfulGame
         {
             if (Mana - _spellManaCost >= 0)
             {
-                int damages = Attack;
+                int damages = EffectiveAttack;
                 Mana -= _spellManaCost;
-                if (Weapon != null)
-                {
-                    damages += Weapon.Attack;
-                }
 
                 /* Extra damages from the spell */
                 Random rnd = new Random();
                 int chance = rnd.Next(100);
-                if (chance <= (5 + Critical))
+                if (chance <= (5 + EffectiveCritical))
                 {
-                    damages += Critical;
+                    damages += EffectiveCritical;
                     Console.WriteLine("Vous lancez Gloire du Juste : vous infligez des dégats supplémentaires");
                 }
                 else
@@ -53,7 +49,7 @@ namespace ReallyPainfulGame
 
         public override string ToString()
         {
-            return ("------------------\nEcuyer niveau " + Level + "\n" + base.ToString());
+            return ("------------------\n" + Name + " : Ecuyer niveau " + Level + "\n" + base.ToString());
         }
     }
 }
