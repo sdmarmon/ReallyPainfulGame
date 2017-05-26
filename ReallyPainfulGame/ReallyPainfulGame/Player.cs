@@ -386,10 +386,9 @@ namespace ReallyPainfulGame
             }
             Console.WriteLine(_currentRoom);
             Console.WriteLine("Choisissez une direction");
-            Console.WriteLine("1: Nord");
-            Console.WriteLine("2: Sud");
-            Console.WriteLine("3: Ouest");
-            Console.WriteLine("4: Est");
+            Console.WriteLine("        1:Nord");
+            Console.WriteLine("3:Ouest"+"        "+ "4:Est");
+            Console.WriteLine("        2:Sud");
             Console.WriteLine("------------------");
 
             string choice = "";
