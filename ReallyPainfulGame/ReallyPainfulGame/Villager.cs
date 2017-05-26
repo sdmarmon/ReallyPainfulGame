@@ -40,13 +40,13 @@ namespace ReallyPainfulGame
                     //Doesn't leave the store
                     if (choice != _items.Count + 1)
                     {
-                        if (_items.ElementAt(choice - 1).Price > player.Gold)
-                        {
-                            Console.WriteLine("Vous n'avez pas assez d'argent");
-                        }
-                        else if (choice < 1 || choice > _items.Count + 1)
+                        if (choice < 1 || choice > _items.Count + 1)
                         {
                             Console.WriteLine("Veuillez rentrer un nombre valide");
+                        }
+                        else if (_items.ElementAt(choice - 1).Price > player.Gold)
+                        {
+                            Console.WriteLine("Vous n'avez pas assez d'argent");
                         }
                     }
                 }
